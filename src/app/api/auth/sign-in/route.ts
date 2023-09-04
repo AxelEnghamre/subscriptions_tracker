@@ -8,10 +8,7 @@ const dynamic = "force-dynamic";
 
 const POST = async (request: Request) => {
   const supabase = createRouteHandlerClient<Database>({ cookies });
-  console.log("SUPABASE SIGN IN");
-
   const data = await request.json();
-  console.log(data);
 
   const validatedData = signInSchema.safeParse(data);
 

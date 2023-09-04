@@ -27,7 +27,8 @@ const SignIn = () => {
         });
 
         if (res.ok) {
-          router.replace("/home");
+          router.replace("/");
+          router.refresh();
         }
       } catch (error) {
         // TODO show errors
