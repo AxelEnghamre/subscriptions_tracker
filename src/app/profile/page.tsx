@@ -5,7 +5,7 @@ const metadata: Metadata = {
 };
 
 const ProfilePage = async () => {
-  <div>Din profil</div>;
+  return <div>Din profil</div>;
 };
 
 export default ProfilePage;
