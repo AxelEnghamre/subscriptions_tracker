@@ -5,10 +5,10 @@ const metadata: Metadata = {
   title: "Registra dig",
 };
 
-const SignInPage = async () => {
+const SignUpPage = async () => {
   return <SignUp />;
 };
 
-export default SignInPage;
+export default SignUpPage;
 
 export { metadata };
