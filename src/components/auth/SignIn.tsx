@@ -54,12 +54,14 @@ const SignIn = () => {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        className="border-solid border-black border-2"
         type="email"
         name="email"
         value={signInFormValue.email}
         onChange={handleChange}
       />
       <input
+        className="border-solid border-black border-2"
         type="password"
         name="password"
         value={signInFormValue.password}
