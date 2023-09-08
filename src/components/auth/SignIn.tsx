@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signInSchema } from "@/lib/schemas/AuthSchemas";
+import { useContext } from "react";
+import { ThemeContext } from "@/contexts/ThemeContext";
 
 const SignIn = () => {
   const router = useRouter();
@@ -11,7 +13,7 @@ const SignIn = () => {
     password: "",
   });
   const [isSigningIn, setIsSigningIn] = useState(false);
-
+const {theme,changeThemeTo} = useContext(ThemeContext) as ThemeContext;
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSigningIn(true);
@@ -53,8 +55,10 @@ const SignIn = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <button onClick={()=>changeThemeTo("dark")}>dark</button>
+      <button onClick={()=>changeThemeTo("light")}>light</button>
       <input
-        className="border-solid border-black border-2"
+        className="border-solid border-black border-2 bg-midnight"
         type="email"
         name="email"
         value={signInFormValue.email}

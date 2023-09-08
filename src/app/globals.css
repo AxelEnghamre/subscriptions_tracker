@@ -13,3 +13,15 @@
   --off-white: #f6f6f6;
   --purple-light: #acbafc;
 }
+
+.darkTheme {
+  --black: #111111;
+  --purple: #7c8ee4;
+  --babyblue: #84e1ff;
+  --dawn: #76aeff;
+  --midnight: red;
+  --sunflower: #f8dc7c;
+  --olive: #acc190;
+  --off-white: #f6f6f6;
+  --purple-light: #acbafc;
+}

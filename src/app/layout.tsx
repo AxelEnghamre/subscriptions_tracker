@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { ThemeContextProvider } from "@/contexts/ThemeContext";
 
 const metadata: Metadata = {
   title: "Create Next App",
@@ -9,7 +10,9 @@ const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="sv">
-      <body className="">{children}</body>
+      <body className="">
+        <ThemeContextProvider>{children}</ThemeContextProvider>
+      </body>
     </html>
   );
 };
