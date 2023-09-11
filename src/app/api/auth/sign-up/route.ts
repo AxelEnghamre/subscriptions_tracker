@@ -24,6 +24,9 @@ const POST = async (request: Request) => {
       password,
       options: {
         emailRedirectTo: `${requestUrl.origin}/auth/callback`,
+        data: {
+          name,
+        },
       },
     });
 
