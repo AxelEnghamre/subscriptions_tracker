@@ -13,7 +13,7 @@ const Input = ({
 }) => {
   return (
     <input
-      className="bg-midnight"
+      className="bg-midnight text-white"
       type={type}
       name={name}
       placeholder={placeholder}
