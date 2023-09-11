@@ -9,6 +9,28 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      profiles: {
+        Row: {
+          id: string
+          name: string | null
+        }
+        Insert: {
+          id: string
+          name?: string | null
+        }
+        Update: {
+          id?: string
+          name?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_id_fkey"
+            columns: ["id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       services: {
         Row: {
           created_at: string | null
