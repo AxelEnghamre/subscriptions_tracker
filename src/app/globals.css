@@ -3,25 +3,53 @@
 @tailwind utilities;
 
 :root {
-  --black: #111111;
-  --purple: #7c8ee4;
-  --babyblue: #84e1ff;
+  --knapp-text: #f6f6f6;
+  --träning: #f07a24;
+  --spel: #9b2fcd;
+  --böcker: #333333;
+  --livsstil: #4b5cf1;
+  --nöje: #d01616;
+  --musik: #309328;
+  --button: #acbafc;
+  --ikoner: #ffffff;
+  --bill: #111344;
+  --menu: #acbafc;
   --dawn: #76aeff;
-  --midnight: #111344;
-  --sunflower: #f8dc7c;
-  --olive: #acc190;
+  --rader: #f6f6f6;
+  --sunflower: #ffa53b;
   --off-white: #f6f6f6;
-  --purple-light: #acbafc;
+  --health: #f07a24;
+  --game: #9a2fcd;
+  --lifestyle: #4b5cf1;
+  --music: #309328;
+  --entertainment: #d01616;
+  --danger: #ff0000;
+  --midnight: #111344;
+  --text: #f6f6f6;
 }
 
 .darkTheme {
-  --black: #111111;
-  --purple: #7c8ee4;
-  --babyblue: #84e1ff;
+  --knapp-text: #111344;
+  --träning: #f07a24;
+  --spel: #dc91ff;
+  --böcker: #e4e2e2;
+  --livsstid: #8e99fc;
+  --nöje: #d01616;
+  --musik: #68c160;
+  --button: #acbafc;
+  --ikoner: #ffffff;
+  --bill: #f6f6f6;
+  --menu: #111344;
   --dawn: #76aeff;
-  --midnight: red;
-  --sunflower: #f8dc7c;
-  --olive: #acc190;
+  --rader: #737373;
+  --sunflower: #ffa53b;
   --off-white: #f6f6f6;
-  --purple-light: #acbafc;
+  --health: #f07a24;
+  --game: #9a2fcd;
+  --lifestyle: #4b5cf1;
+  --music: #309328;
+  --entertainment: #d01616;
+  --danger: #b10000;
+  --midnight: #111344;
+  --text: #111344;
 }
