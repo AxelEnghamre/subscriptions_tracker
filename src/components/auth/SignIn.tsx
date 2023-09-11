@@ -6,7 +6,6 @@ import { signInSchema } from "@/lib/schemas/AuthSchemas";
 import { useContext } from "react";
 import { ThemeContext } from "@/contexts/ThemeContext";
 import Input from "../UI/Input";
-import dark from "../../lib/dark.png";
 
 const SignIn = () => {
   const router = useRouter();
@@ -59,35 +58,53 @@ const SignIn = () => {
   return (
     <div>
       {/* <img src={dark} alt="hello" /> */}
+      <h2 className="text-xl font-normal">Login</h2>
+
       <form onSubmit={handleSubmit}>
-        <button onClick={() => changeThemeTo("dark")}>dark</button>
-        <button onClick={() => changeThemeTo("light")}>light</button>
-        <Input
-          type="email"
-          name="email"
-          placeholder="Skriv din Email"
-          value={signInFormValue.email}
-          onChange={handleChange}
-        />
-        <Input
-          type={!showPassword ? "password" : "text"}
-          name="password"
-          placeholder="Skriv ditt lösenord"
-          value={signInFormValue.password}
-          onChange={handleChange}
-        />
-        <div
-          className="bg-sunflower w-30-h40"
-          onClick={() =>
-            showPassword ? setShowPassword(false) : setShowPassword(true)
-          }
-        >
-          Show
+        <label htmlFor="email" className="block pr-6 pl-6">
+          E-post
+        </label>
+        <div className="pr-6 pl-6">
+          <Input
+            type="email"
+            name="email"
+            placeholder="Ange e-postadress"
+            value={signInFormValue.email}
+            onChange={handleChange}
+            id="email"
+          />
         </div>
+
+        <label htmlFor="password" className="block pr-6 pl-6">
+          Lösenord
+        </label>
+        <div className="flex pr-6 pl-6">
+          <Input
+            type={!showPassword ? "password" : "text"}
+            name="password"
+            placeholder="Ange lösenord"
+            value={signInFormValue.password}
+            onChange={handleChange}
+            id="password"
+          />
+          <img
+            src="/eye.svg"
+            alt=""
+            className="w-30-h40"
+            onClick={() =>
+              showPassword ? setShowPassword(false) : setShowPassword(true)
+            }
+          />
+        </div>
+
+        <a href="">Glömmt ditt lösenord?</a>
+
         <button type="submit" disabled={isSigningIn}>
           Logga in
         </button>
       </form>
+      <p>Haru du inget konto?</p>
+      <a href="">Skapa konto</a>
     </div>
   );
 };
