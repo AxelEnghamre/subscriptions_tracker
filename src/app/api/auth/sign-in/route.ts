@@ -1,10 +1,10 @@
+const dynamic = "force-dynamic";
+
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { signInSchema } from "@/lib/schemas/AuthSchemas";
 
 import type { Database } from "@/lib/supabase";
-
-const dynamic = "force-dynamic";
 
 const POST = async (request: Request) => {
   const supabase = createRouteHandlerClient<Database>({ cookies });
@@ -22,19 +22,22 @@ const POST = async (request: Request) => {
     });
 
     if (auth.error) {
-      return new Response(JSON.stringify({ message: "Invalid user" }), {
-        status: 401,
-      });
+      return new Response(
+        JSON.stringify({ message: "Användare och lösenord matchade inte" }),
+        {
+          status: 401,
+        },
+      );
     }
 
     if (auth.data) {
-      return new Response(JSON.stringify({ message: "Success logged in" }), {
+      return new Response(JSON.stringify({ message: "Välkommen" }), {
         status: 200,
       });
     }
   }
 
-  return new Response(JSON.stringify({ message: "Invalid user data" }), {
+  return new Response(JSON.stringify({ message: "Ogiltig data" }), {
     status: 417,
   });
 };
