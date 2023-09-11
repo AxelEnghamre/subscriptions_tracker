@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { signInSchema } from "@/lib/schemas/AuthSchemas";
 import { useContext } from "react";
 import { ThemeContext } from "@/contexts/ThemeContext";
+import { Input } from "../UI/Input";
 
 const SignIn = () => {
   const router = useRouter();
@@ -13,7 +14,7 @@ const SignIn = () => {
     password: "",
   });
   const [isSigningIn, setIsSigningIn] = useState(false);
-const {theme,changeThemeTo} = useContext(ThemeContext) as ThemeContext;
+  const { theme, changeThemeTo } = useContext(ThemeContext) as ThemeContext;
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSigningIn(true);
@@ -55,19 +56,19 @@ const {theme,changeThemeTo} = useContext(ThemeContext) as ThemeContext;
 
   return (
     <form onSubmit={handleSubmit}>
-      <button onClick={()=>changeThemeTo("dark")}>dark</button>
-      <button onClick={()=>changeThemeTo("light")}>light</button>
-      <input
-        className="border-solid border-black border-2 bg-midnight"
+      <button onClick={() => changeThemeTo("dark")}>dark</button>
+      <button onClick={() => changeThemeTo("light")}>light</button>
+      <Input
         type="email"
         name="email"
+        placeholder="Skriv din Email"
         value={signInFormValue.email}
         onChange={handleChange}
       />
-      <input
-        className="border-solid border-black border-2"
+      <Input
         type="password"
         name="password"
+        placeholder="Skriv ditt lösenord"
         value={signInFormValue.password}
         onChange={handleChange}
       />
