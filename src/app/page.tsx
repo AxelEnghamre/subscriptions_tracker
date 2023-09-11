@@ -1,3 +1,5 @@
+const dynamic = "force-dynamic";
+
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import type { Database } from "@/lib/supabase";
@@ -9,7 +11,7 @@ const Home = async () => {
 
   const session = (await supabase.auth.getSession()).data.session;
 
-  if(!session) {
+  if (!session) {
     redirect("/sign-in");
   }
 
@@ -20,5 +22,4 @@ const Home = async () => {
 
 export default Home;
 
-const dynamic = "force-dynamic";
-export {dynamic}
+export { dynamic };
