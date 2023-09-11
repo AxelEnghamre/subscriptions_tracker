@@ -16,7 +16,9 @@ const Home = async () => {
   }
 
   return (
-    <main className="">{session ? <SignedInHome /> : <SignOutHome />}</main>
+    <main className="w-full h-full relative">
+      Home screen
+    </main>
   );
 };
 
