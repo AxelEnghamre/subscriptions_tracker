@@ -8,6 +8,9 @@ import { ThemeContext } from "@/contexts/ThemeContext";
 import Input from "../UI/Input";
 import Link from "next/link";
 
+const emailSchema = signInSchema.pick({ email: true });
+const passwordSchema = signInSchema.pick({ password: true });
+
 const SignIn = () => {
   const router = useRouter();
   const [signInFormValue, setSignInFormValue] = useState({
@@ -15,6 +18,8 @@ const SignIn = () => {
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [isSigningIn, setIsSigningIn] = useState(false);
   const { theme, changeThemeTo } = useContext(ThemeContext) as ThemeContext;
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -52,15 +57,32 @@ const SignIn = () => {
       ...signInFormValueSate,
       [name]: value,
     }));
-
     // TODO show errors
+
+    if (name === "email") {
+      const resp = emailSchema.safeParse({ email: value });
+      if (!resp.success) {
+        const error = resp.error.issues[0].message;
+        setEmailError(error);
+      } else {
+        setEmailError("");
+      }
+    } else if (name === "password") {
+      const resp = passwordSchema.safeParse({ password: value });
+      if (!resp.success) {
+        const error = resp.error.issues[0].message;
+        setPasswordError(error);
+      } else {
+        setPasswordError("");
+      }
+    }
   };
 
   return (
-    <div>
-      {/* <img src={dark} alt="hello" /> */}
+    <div className="bg-dawn">
+      {/* TODO change logo based on theme*/}
+      <img src="/lightLogo.svg" alt="hello" />
       <h2 className="text-xl font-normal">Login</h2>
-
       <form onSubmit={handleSubmit}>
         <label htmlFor="email" className="block pr-6 pl-6">
           E-post
@@ -75,6 +97,7 @@ const SignIn = () => {
             onChange={handleChange}
             id="email"
           />
+          <p>{emailError}</p>
         </div>
 
         <label htmlFor="password" className="block pr-6 pl-6">
@@ -90,6 +113,7 @@ const SignIn = () => {
             onChange={handleChange}
             id="password"
           />
+          <p>{passwordError}</p>
           <img
             src="/eye.svg"
             alt=""
