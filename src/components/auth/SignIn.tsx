@@ -6,6 +6,7 @@ import { signInSchema } from "@/lib/schemas/AuthSchemas";
 import { useContext } from "react";
 import { ThemeContext } from "@/contexts/ThemeContext";
 import Input from "../UI/Input";
+import Link from "next/link";
 
 const SignIn = () => {
   const router = useRouter();
@@ -64,7 +65,8 @@ const SignIn = () => {
         <label htmlFor="email" className="block pr-6 pl-6">
           E-post
         </label>
-        <div className="pr-6 pl-6">
+        <div className="pr-6 pl-6 flex">
+          <img src="mail.svg" alt="" />
           <Input
             type="email"
             name="email"
@@ -79,6 +81,7 @@ const SignIn = () => {
           Lösenord
         </label>
         <div className="flex pr-6 pl-6">
+          <img src="/lock.svg" alt="" />
           <Input
             type={!showPassword ? "password" : "text"}
             name="password"
@@ -103,8 +106,8 @@ const SignIn = () => {
           Logga in
         </button>
       </form>
-      <p>Haru du inget konto?</p>
-      <a href="">Skapa konto</a>
+      <p>Har du inget konto?</p>
+      <Link href="/sign-up">Skapa konto</Link>
     </div>
   );
 };
