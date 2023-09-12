@@ -64,7 +64,7 @@ const Menu = () => {
         className="fixed left-0 bottom-0 w-screen h-4/5 bg-menu rounded-t-3xl"
         animate={menuOpen ? "open" : "closed"}
         initial={"closed"}
-        transition={{ type: "spring", stiffness: 10, damping: 6 }}
+        // transition={{ type: "spring", stiffness: 10, damping: 6 }}
         variants={{
           open: { y: "0%" },
           closed: { y: "calc(100% - 6rem)" },
@@ -78,7 +78,7 @@ const Menu = () => {
         <motion.div
           onHoverStart={() => setIsDragging(true)}
           onHoverEnd={() => setIsDragging(false)}
-          className={`mx-auto w-20 h-12 touch-pan-y hover:cursor-pointer `}
+          className={`mx-auto w-20 h-12 overflow-hidden touch-pan-y hover:cursor-pointer `}
         >
           <div
             className={`w-10 mt-5 border-2 mx-auto ${
@@ -93,6 +93,7 @@ const Menu = () => {
           </li>
         </ul>
         <ThemeButton />
+        <div className="w-full h-screen absolute left-0 top-full bg-menu" />
       </motion.nav>
     </>
   );
