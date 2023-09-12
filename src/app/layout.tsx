@@ -10,7 +10,7 @@ const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="sv">
-      <body className="w-screen h-screen">
+      <body className="w-screen h-screen overflow-hidden">
         <ThemeContextProvider>{children}</ThemeContextProvider>
       </body>
     </html>
