@@ -6,6 +6,7 @@ import { signInSchema } from "@/lib/schemas/AuthSchemas";
 import { useContext } from "react";
 import { ThemeContext } from "@/contexts/ThemeContext";
 import Input from "../UI/Input";
+import ShowPasswordButton from "../UI/ShowPasswordButton";
 import Link from "next/link";
 
 const emailSchema = signInSchema.pick({ email: true });
@@ -114,10 +115,8 @@ const SignIn = () => {
             id="password"
           />
           <p>{passwordError}</p>
-          <img
-            src="/eye.svg"
-            alt=""
-            className="w-30-h40"
+
+          <ShowPasswordButton
             onClick={() =>
               showPassword ? setShowPassword(false) : setShowPassword(true)
             }
