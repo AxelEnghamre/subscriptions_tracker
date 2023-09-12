@@ -12,6 +12,12 @@ const Menu = () => {
   const [isDragging, setIsDragging] = useState(false);
   const positionY = useMotionValue(0);
 
+  const closeMenu = () => {
+    setIsDragging(false);
+    setMenuOpen(false);
+    positionY.destroy();
+  };
+
   const handleDrag = (
     event: MouseEvent | TouchEvent | PointerEvent,
     info: PanInfo,
@@ -24,9 +30,7 @@ const Menu = () => {
 
       // To ensure hard drag
       if (info.delta.y > 15) {
-        setIsDragging(false);
-        setMenuOpen(false);
-        positionY.destroy();
+        closeMenu();
       }
     }
   };
@@ -76,23 +80,35 @@ const Menu = () => {
         onDrag={handleDrag}
       >
         <motion.div
-          onHoverStart={() => setIsDragging(true)}
-          onHoverEnd={() => setIsDragging(false)}
+          drag="y"
+          onDrag={handleDrag}
+          dragConstraints={{ top: 10, bottom: 10 }}
+          dragSnapToOrigin
           className={`mx-auto w-20 h-12 overflow-hidden touch-pan-y hover:cursor-pointer `}
         >
-          <div
-            className={`w-10 mt-5 border-2 mx-auto ${
+          <motion.div
+            className={`w-10 mt-5 border-2 mx-auto rounded-full ${
               menuOpen ? "block" : "hidden"
             }`}
           />
         </motion.div>
 
-        <ul className=" mt-28">
-          <li>
+        <motion.ul
+          className="mx-10 flex flex-col gap-5"
+          animate={menuOpen ? "open" : "closed"}
+          initial={"closed"}
+          variants={{
+            open: { opacity: 1 },
+            closed: { opacity: 0 },
+          }}
+        >
+          <li className="h-10">
             <button onClick={signOut}>Logga ut</button>
           </li>
-        </ul>
-        <ThemeButton />
+          <li className="h-10 flex flex-col justify-end">
+            <ThemeButton />
+          </li>
+        </motion.ul>
         <div className="w-full h-screen absolute left-0 top-full bg-menu" />
       </motion.nav>
     </>
