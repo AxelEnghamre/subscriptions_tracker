@@ -4,18 +4,20 @@ import ThemeButton from "../UI/buttons/ThemeButton";
 import { motion, useMotionValue, PanInfo } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import Link from "next/link";
+import Profile from "./Profile";
 
 const Menu = () => {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const positionY = useMotionValue(0);
+  const [segment, setSegment] = useState("");
 
   const closeMenu = () => {
     setIsDragging(false);
     setMenuOpen(false);
     positionY.destroy();
+    setSegment("");
   };
 
   const handleDrag = (
@@ -36,7 +38,11 @@ const Menu = () => {
   };
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    if(menuOpen) {
+      closeMenu();
+    } else{
+      setMenuOpen(true);
+    }
   };
 
   const signOut = async () => {
@@ -65,7 +71,7 @@ const Menu = () => {
 
       {/* MENU */}
       <motion.nav
-        className="fixed left-0 bottom-0 w-screen h-4/5 bg-menu rounded-t-3xl"
+        className="fixed left-0 bottom-0 w-screen h-4/5 bg-menu rounded-t-3xl px-10"
         animate={menuOpen ? "open" : "closed"}
         initial={"closed"}
         // transition={{ type: "spring", stiffness: 10, damping: 6 }}
@@ -94,7 +100,7 @@ const Menu = () => {
         </motion.div>
 
         <motion.ul
-          className="mx-10 flex flex-col gap-5"
+          className="relative flex flex-col gap-5 w-full h-fit"
           animate={menuOpen ? "open" : "closed"}
           initial={"closed"}
           variants={{
@@ -102,6 +108,20 @@ const Menu = () => {
             closed: { opacity: 0 },
           }}
         >
+          <li className="h-10">
+            <button onClick={()=>setSegment("profile")}>Profil</button>
+            <Profile
+              name="profile"
+              segment={segment}
+              setSegment={setSegment}
+            />
+          </li>
+          <li className="h-10">
+            <button onClick={()=>{}}>Inställningar</button>
+          </li>
+          <li className="h-10">
+            <button onClick={()=>{}}>Hjälp</button>
+          </li>
           <li className="h-10">
             <button onClick={signOut}>Logga ut</button>
           </li>
