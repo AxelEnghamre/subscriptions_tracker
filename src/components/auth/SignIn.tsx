@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { signInSchema } from "@/lib/schemas/AuthSchemas";
 import { useContext } from "react";
 import { ThemeContext } from "@/contexts/ThemeContext";
+import Image from "next/image";
 import ThemeButton from "../UI/buttons/ThemeButton";
 import Input from "../UI/Input";
 import ShowPasswordButton from "../UI/ShowPasswordButton";
@@ -83,7 +84,13 @@ const SignIn = () => {
   return (
     <div className="bg-menu">
       {/* TODO change logo based on theme*/}
-      <img src="/lightLogo.svg" alt="hello" />
+      <Image
+        src="/lightLogo.svg"
+        alt="bill logo"
+        width={300}
+        height={200}
+        priority
+      />
       <h2 className="text-xl font-normal">Login</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email" className="block pr-6 pl-6">
