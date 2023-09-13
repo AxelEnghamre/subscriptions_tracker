@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { signInSchema } from "@/lib/schemas/AuthSchemas";
 import { useContext } from "react";
 import { ThemeContext } from "@/contexts/ThemeContext";
+import ThemeButton from "../UI/buttons/ThemeButton";
 import Input from "../UI/Input";
 import ShowPasswordButton from "../UI/ShowPasswordButton";
 import Link from "next/link";
@@ -80,7 +81,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="bg-dawn">
+    <div className="bg-menu">
       {/* TODO change logo based on theme*/}
       <img src="/lightLogo.svg" alt="hello" />
       <h2 className="text-xl font-normal">Login</h2>
@@ -129,8 +130,10 @@ const SignIn = () => {
           Logga in
         </button>
       </form>
-      <p>Har du inget konto?</p>
-      <Link href="/sign-up">Skapa konto</Link>
+      <p>
+        Har du inget konto? <Link href="/sign-up">Skapa konto</Link>
+      </p>
+      <ThemeButton />
     </div>
   );
 };
