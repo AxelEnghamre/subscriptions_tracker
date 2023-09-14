@@ -83,99 +83,112 @@ const SignIn = () => {
   };
 
   return (
-    <div className="bg-menu">
+    <div className="bg-menu h-full">
       {/* TODO change logo based on theme*/}
-      <Image
-        src="/lightLogo.svg"
-        alt="bill logo"
-        width={300}
-        height={200}
-        priority
-      />
+      <div className="w-full flex flex-col items-center justify-center pt-[18px] gap-8 mb-7">
+        <Image
+          src="/lightLogo.svg"
+          alt="bill logo"
+          width={195}
+          height={118}
+          priority
+        />
 
-      <h2 className="text-xl font-normal">Login</h2>
+        <h2 className="text-xl font-normal">Login</h2>
+      </div>
 
       <form onSubmit={handleSubmit}>
-        <div className="mx-6">
-          <label htmlFor="email" className="">
-            <p>E-post</p>
-            <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full">
-              <div className="pl-4">
-                <Image
-                  src={"mail.svg"}
-                  alt="email icon"
-                  width={16}
-                  height={13}
+        <div className="flex flex-col gap-8">
+          <div className="mx-6">
+            <label htmlFor="email" className="">
+              <p>E-post</p>
+              <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full">
+                <div className="pl-4">
+                  <Image
+                    src={"mail.svg"}
+                    alt="email icon"
+                    width={16}
+                    height={13}
+                  />
+                </div>
+
+                <Input
+                  className="focus:outline-none"
+                  type="email"
+                  name="email"
+                  placeholder="Ange e-postadress"
+                  value={signInFormValue.email}
+                  onChange={handleChange}
+                  id="email"
                 />
               </div>
+            </label>
+            <p>{emailError}</p>
+          </div>
 
-              <Input
-                className="focus:outline-none"
-                type="email"
-                name="email"
-                placeholder="Ange e-postadress"
-                value={signInFormValue.email}
-                onChange={handleChange}
-                id="email"
-              />
-            </div>
-          </label>
-          <p>{emailError}</p>
+          <div className="mx-6">
+            <label htmlFor="password" className="">
+              <p>Lösenord</p>
+              <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full">
+                <div className="pl-4">
+                  <Image
+                    src={"/lock.svg"}
+                    alt="lock icon"
+                    width={16}
+                    height={20}
+                  />
+                </div>
+                <Input
+                  className="focus:outline-none"
+                  type={!showPassword ? "password" : "text"}
+                  name="password"
+                  placeholder="Ange lösenord"
+                  value={signInFormValue.password}
+                  onChange={handleChange}
+                  id="password"
+                />
+
+                <div className="pr-4">
+                  <ShowPasswordButton
+                    onClick={() =>
+                      showPassword
+                        ? setShowPassword(false)
+                        : setShowPassword(true)
+                    }
+                  />
+                </div>
+              </div>
+            </label>
+            <p>{passwordError}</p>
+          </div>
         </div>
 
-        <div className="mx-6">
-          <label htmlFor="password" className="">
-            <p>Lösenord</p>
-            <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full">
-              <div className="pl-4">
-                <Image
-                  src={"/lock.svg"}
-                  alt="lock icon"
-                  width={16}
-                  height={20}
-                />
-              </div>
-              <Input
-                className="focus:outline-none"
-                type={!showPassword ? "password" : "text"}
-                name="password"
-                placeholder="Ange lösenord"
-                value={signInFormValue.password}
-                onChange={handleChange}
-                id="password"
-              />
-
-              <div className="pr-4">
-                <ShowPasswordButton
-                  onClick={() =>
-                    showPassword
-                      ? setShowPassword(false)
-                      : setShowPassword(true)
-                  }
-                />
-              </div>
-            </div>
-          </label>
-          <p>{passwordError}</p>
+        <div className="w-full flex justify-end pr-6 underline">
+          <a href="">Glömmt ditt lösenord?</a>
         </div>
 
-        <a href="">Glömmt ditt lösenord?</a>
+        <div className="w-full flex justify-center m-5">
+          <button type="submit" disabled={isSigningIn}>
+            Logga in
+          </button>
 
-        <button type="submit" disabled={isSigningIn}>
-          Logga in
-        </button>
+          <ConfirmButton
+            className="bg-bill rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-off-white"
+            value="Logga in"
+            onClick={() => {
+              console.log("hello");
+            }}
+          />
+        </div>
       </form>
-      <ConfirmButton
-        className="bg-bill rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-off-white"
-        value="Logga in"
-        onClick={() => {
-          console.log("hello");
-        }}
-      />
-      <p>
-        Har du inget konto? <Link href="/sign-up">Skapa konto</Link>
-      </p>
-      <ThemeButton />
+
+      <div className=" w-full flex flex-col justify-center items-center gap-8">
+        <p>Har du inget konto?</p>
+        <Link href="/sign-up" className="underline">
+          Skapa konto
+        </Link>
+        <ThemeButton />
+      </div>
     </div>
   );
 };
