@@ -2,11 +2,13 @@
 
 import { z } from "zod";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import ThemeButton from "../UI/buttons/ThemeButton";
 import Input from "../UI/Input";
 import Image from "next/image";
 import ShowPasswordButton from "../UI/ShowPasswordButton";
 import ConfirmButton from "../UI/buttons/ConfirmButton";
+import GoBackButton from "../UI/buttons/GoBackButton";
 
 const signUpSchema = z.object({
   name: z.string().min(2, "För kort").max(50, "För långt"),
@@ -14,7 +16,6 @@ const signUpSchema = z.object({
   password: z.string().min(5, "För kort"),
   confirmPassword: z.string().min(5, "För kort"),
 });
-
 const emailSchema = signUpSchema.pick({ email: true });
 const nameSchema = signUpSchema.pick({ name: true });
 const passwordSchema = signUpSchema.pick({ password: true });
@@ -22,6 +23,7 @@ const confirmPasswordSchema = signUpSchema.pick({ confirmPassword: true });
 
 const SignUp = () => {
   // TODO use a component state for the components instead
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setshowConfirmPassword] = useState(false);
   const [signUpFormValue, setSignUpFormValue] = useState({
@@ -82,6 +84,11 @@ const SignUp = () => {
   };
   return (
     <div className="bg-menu">
+      <GoBackButton
+        onClick={() => {
+          router.push("/sign-in");
+        }}
+      />
       <Image
         src="/lightLogo.svg"
         alt="bill logo"
@@ -160,13 +167,13 @@ const SignUp = () => {
         <button>Skapa konto</button>
       </form>
       <ThemeButton />
-      <ConfirmButton
+      {/* <ConfirmButton
         className="bg-bill rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-off-white"
         value="Skapa konto"
         onClick={() => {
           console.log("hello");
         }}
-      />
+      /> */}
     </div>
   );
 };
