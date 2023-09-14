@@ -83,7 +83,7 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="bg-menu">
+    <div className="bg-gradient-to-b from-gradient-top to-gradient-bottom h-full">
       <GoBackButton
         onClick={() => {
           router.push("/sign-in");

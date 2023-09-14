@@ -83,7 +83,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="bg-menu h-full">
+    <div className="bg-gradient-to-b from-gradient-top to-gradient-bottom h-full">
       {/* TODO change logo based on theme*/}
       <div className="w-full flex flex-col items-center justify-center pt-[18px] gap-8 mb-7">
         <Image
