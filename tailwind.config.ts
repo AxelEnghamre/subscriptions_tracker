@@ -44,6 +44,8 @@ const config: Config = {
         "homescreen-bg": "var(--homescreen-bg)",
         "gradient-top": "var(--gradient-top)",
         "gradient-bottom": "var(--gradient-bottom)",
+        "loading-gradient-top": "var(--loading-gradient-top)",
+        "loading-gradient-bottom": "var(--loading-gradient-bottom)",
       },
     },
   },
