@@ -71,7 +71,9 @@ const Menu = () => {
 
       {/* MENU */}
       <motion.nav
-        className="fixed left-0 bottom-0 w-screen h-4/5 bg-menu rounded-t-3xl"
+        className={`fixed left-0 bottom-0 w-screen h-4/5 bg-gradient-to-t from-menu rounded-t-3xl ${
+          menuOpen ? "to-off-white" : "to-menu"
+        }`}
         animate={menuOpen ? "open" : "closed"}
         initial={"closed"}
         variants={{
@@ -89,10 +91,10 @@ const Menu = () => {
           onDrag={handleDrag}
           dragConstraints={{ top: 10, bottom: 10 }}
           dragSnapToOrigin
-          className={`mx-auto w-20 h-12 overflow-hidden touch-pan-y hover:cursor-pointer `}
+          className={`mx-auto w-20 h-12 overflow-hidden touch-pan-y hover:cursor-pointer`}
         >
           <motion.div
-            className={`w-10 mt-5 border-2 mx-auto rounded-full ${
+            className={`w-10 mt-5 border-2 mx-auto rounded-full border-bill ${
               menuOpen ? "block" : "hidden"
             }`}
           />
@@ -150,6 +152,7 @@ const Menu = () => {
             </div>
           </motion.div>
         </motion.div>
+        <div className="absolute inset-0 translate-y-full bg-menu" />
       </motion.nav>
     </>
   );
