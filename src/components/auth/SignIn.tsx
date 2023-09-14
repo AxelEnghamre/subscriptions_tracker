@@ -10,6 +10,7 @@ import ThemeButton from "../UI/buttons/ThemeButton";
 import Input from "../UI/Input";
 import ShowPasswordButton from "../UI/ShowPasswordButton";
 import Link from "next/link";
+import ConfirmButton from "../UI/buttons/ConfirmButton";
 
 const emailSchema = signInSchema.pick({ email: true });
 const passwordSchema = signInSchema.pick({ password: true });
@@ -91,44 +92,71 @@ const SignIn = () => {
         height={200}
         priority
       />
+
       <h2 className="text-xl font-normal">Login</h2>
+
       <form onSubmit={handleSubmit}>
-        <label htmlFor="email" className="block pr-6 pl-6">
-          E-post
-        </label>
-        <div className="pr-6 pl-6 flex">
-          <img src="mail.svg" alt="" />
-          <Input
-            type="email"
-            name="email"
-            placeholder="Ange e-postadress"
-            value={signInFormValue.email}
-            onChange={handleChange}
-            id="email"
-          />
+        <div className="mx-6">
+          <label htmlFor="email" className="">
+            <p>E-post</p>
+            <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full">
+              <div className="pl-4">
+                <Image
+                  src={"mail.svg"}
+                  alt="email icon"
+                  width={16}
+                  height={13}
+                />
+              </div>
+
+              <Input
+                className="focus:outline-none"
+                type="email"
+                name="email"
+                placeholder="Ange e-postadress"
+                value={signInFormValue.email}
+                onChange={handleChange}
+                id="email"
+              />
+            </div>
+          </label>
           <p>{emailError}</p>
         </div>
 
-        <label htmlFor="password" className="block pr-6 pl-6">
-          Lösenord
-        </label>
-        <div className="flex pr-6 pl-6">
-          <img src="/lock.svg" alt="" />
-          <Input
-            type={!showPassword ? "password" : "text"}
-            name="password"
-            placeholder="Ange lösenord"
-            value={signInFormValue.password}
-            onChange={handleChange}
-            id="password"
-          />
-          <p>{passwordError}</p>
+        <div className="mx-6">
+          <label htmlFor="password" className="">
+            <p>Lösenord</p>
+            <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full">
+              <div className="pl-4">
+                <Image
+                  src={"/lock.svg"}
+                  alt="lock icon"
+                  width={16}
+                  height={20}
+                />
+              </div>
+              <Input
+                className="focus:outline-none"
+                type={!showPassword ? "password" : "text"}
+                name="password"
+                placeholder="Ange lösenord"
+                value={signInFormValue.password}
+                onChange={handleChange}
+                id="password"
+              />
 
-          <ShowPasswordButton
-            onClick={() =>
-              showPassword ? setShowPassword(false) : setShowPassword(true)
-            }
-          />
+              <div className="pr-4">
+                <ShowPasswordButton
+                  onClick={() =>
+                    showPassword
+                      ? setShowPassword(false)
+                      : setShowPassword(true)
+                  }
+                />
+              </div>
+            </div>
+          </label>
+          <p>{passwordError}</p>
         </div>
 
         <a href="">Glömmt ditt lösenord?</a>
@@ -137,6 +165,13 @@ const SignIn = () => {
           Logga in
         </button>
       </form>
+      <ConfirmButton
+        className="bg-bill rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-off-white"
+        value="Logga in"
+        onClick={() => {
+          console.log("hello");
+        }}
+      />
       <p>
         Har du inget konto? <Link href="/sign-up">Skapa konto</Link>
       </p>
