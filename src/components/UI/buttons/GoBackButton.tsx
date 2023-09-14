@@ -29,9 +29,9 @@ const GoBackButton = ({
         <path
           d="M15.1111 10.2222L9 16.3333M9 16.3333L15.1111 22.4444M9 16.3333H18.7778C25.5281 16.3333 31 21.8052 31 28.5555V29.7777"
           stroke={theme === "light" ? "#111344" : "#F6F6F6"}
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </button>
