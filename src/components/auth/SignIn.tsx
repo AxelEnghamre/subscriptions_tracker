@@ -168,13 +168,11 @@ const SignIn = () => {
         </div>
 
         <div className="w-full flex justify-center m-5">
-          <button type="submit" disabled={isSigningIn}>
-            Logga in
-          </button>
-
           <ConfirmButton
             className="bg-bill rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-off-white"
             value="Logga in"
+            type="submit"
+            disabled={isSigningIn}
             onClick={() => {
               console.log("hello");
             }}
