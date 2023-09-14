@@ -31,10 +31,9 @@ const AppLayout = async ({ children }: { children: React.ReactNode }) => {
   console.log(services);
   console.log(profile);
 
-  
   return (
     <>
-      {children}
+      <main className="w-full h-full">{children}</main>
       <Menu />
     </>
   );

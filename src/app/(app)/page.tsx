@@ -1,5 +1,5 @@
 const Home = async () => {
-  return <main className="w-full h-full relative">Home screen</main>;
+  return <>Home screen</>;
 };
 
 export default Home;
