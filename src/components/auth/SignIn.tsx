@@ -83,7 +83,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-gradient-top to-gradient-bottom h-full">
+    <div className="bg-gradient-to-b from-loading-gradient-top to-loading-gradient-bottom h-full">
       {/* TODO change logo based on theme*/}
       <div className="w-full flex flex-col items-center justify-center pt-[18px] gap-8 mb-7">
         <Image
@@ -100,7 +100,7 @@ const SignIn = () => {
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-8">
           <div className="mx-6">
-            <label htmlFor="email" className="">
+            <label htmlFor="email">
               <p>E-post</p>
               <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full">
                 <div className="pl-4">
@@ -122,12 +122,13 @@ const SignIn = () => {
                   id="email"
                 />
               </div>
+
+              <p>{emailError}</p>
             </label>
-            <p>{emailError}</p>
           </div>
 
           <div className="mx-6">
-            <label htmlFor="password" className="">
+            <label htmlFor="password">
               <p>Lösenord</p>
               <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full">
                 <div className="pl-4">
@@ -158,8 +159,8 @@ const SignIn = () => {
                   />
                 </div>
               </div>
+              <p>{passwordError}</p>
             </label>
-            <p>{passwordError}</p>
           </div>
         </div>
 
