@@ -42,6 +42,8 @@ const config: Config = {
         "searchbar-foreground": "var(--searchbar-foreground)",
         "button-foreground": "var(--button-foreground)",
         "homescreen-bg": "var(--homescreen-bg)",
+        "gradient-top": "var(--gradient-top)",
+        "gradient-bottom": "var(--gradient-bottom)",
       },
     },
   },

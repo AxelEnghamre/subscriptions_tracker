@@ -31,6 +31,8 @@
   --searchbar-foreground: #ffffff;
   --button-foreground: #111344;
   --homescreen-bg: #f6f6f6;
+  --gradient-top: #f2f2f2;
+  --gradient-bottom: #acbafc;
 }
 
 .darkTheme {
@@ -43,4 +45,6 @@
   --searchbar-foreground: #f6f6f6;
   --button-foreground: #f6f6f6;
   --homescreen-bg: #111344;
+  --gradient-top: #111344;
+  --gradient-bottom: #000000;
 }
