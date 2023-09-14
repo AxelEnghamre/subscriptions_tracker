@@ -1,4 +1,5 @@
 const Input = ({
+  className,
   type,
   name,
   placeholder,
@@ -6,6 +7,7 @@ const Input = ({
   onChange,
   id,
 }: {
+  className?: string;
   type: string;
   placeholder: string;
   name: string;
@@ -15,7 +17,7 @@ const Input = ({
 }) => {
   return (
     <input
-      className="bg-off-white text-midnight rounded-3xl h-12 w-full pl-4 pr-4"
+      className={` bg-off-white text-midnight rounded-3xl h-12 w-full pl-4 pr-4 ${className}`}
       type={type}
       name={name}
       placeholder={placeholder}
