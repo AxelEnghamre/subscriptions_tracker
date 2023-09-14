@@ -62,18 +62,16 @@ const Menu = () => {
           className="w-12 h-12 flex flex-row justify-start gap-2 flex-wrap"
           onClick={toggleMenu}
         >
-          <div className="w-5 h-5 rounded-full bg-bill" />
-          <div className="w-5 h-5 rounded-full bg-bill" />
-          <div className="w-5 h-5 rounded-full bg-bill" />
-          <div className="w-5 h-5 rounded-full bg-bill" />
+          <div className="w-5 h-5 rounded-full bg-logo" />
+          <div className="w-5 h-5 rounded-full bg-logo" />
+          <div className="w-5 h-5 rounded-full bg-logo" />
+          <div className="w-5 h-5 rounded-full bg-logo" />
         </button>
       </div>
 
       {/* MENU */}
       <motion.nav
-        className={`fixed left-0 bottom-0 w-screen h-4/5 bg-gradient-to-t from-menu rounded-t-3xl ${
-          menuOpen ? "to-off-white" : "to-menu"
-        }`}
+        className={`fixed left-0 bottom-0 w-screen h-4/5 bg-menu rounded-t-3xl`}
         animate={menuOpen ? "open" : "closed"}
         initial={"closed"}
         variants={{
@@ -94,7 +92,7 @@ const Menu = () => {
           className={`mx-auto w-20 h-12 overflow-hidden touch-pan-y hover:cursor-pointer`}
         >
           <motion.div
-            className={`w-10 mt-5 border-2 mx-auto rounded-full border-bill ${
+            className={`w-10 mt-5 border-2 mx-auto rounded-full border-logo ${
               menuOpen ? "block" : "hidden"
             }`}
           />
@@ -118,19 +116,19 @@ const Menu = () => {
               segments: { x: "-50%" },
             }}
           >
-            <ul className="w-screen h-full px-10">
-              <li className="h-10">
+            <ul className="w-screen h-full px-10 text-logo flex flex-col gap-5">
+              <li className="h-10 border-b-2 border-logo">
                 <button onClick={() => setSegment("profile")}>Profil</button>
               </li>
-              <li className="h-10">
+              <li className="h-10 border-b-2 border-logo">
                 <button onClick={() => setSegment("settings")}>
                   Inställningar
                 </button>
               </li>
-              <li className="h-10">
+              <li className="h-10 border-b-2 border-logo">
                 <button onClick={() => {}}>Hjälp</button>
               </li>
-              <li className="h-10">
+              <li className="h-10 border-b-2 border-logo">
                 <button onClick={signOut}>Logga ut</button>
               </li>
               <li className="h-10 flex flex-col justify-end">

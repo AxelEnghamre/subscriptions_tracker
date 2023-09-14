@@ -14,7 +14,11 @@ const Segment = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div className={`w-full h-full ${segment === name ? "block" : "hidden"}`}>
+    <div
+      className={`w-full h-full text-logo ${
+        segment === name ? "block" : "hidden"
+      }`}
+    >
       <GoBackButton onClick={() => setSegment("")} />
       {children}
     </div>
