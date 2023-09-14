@@ -6,7 +6,7 @@ import ThemeButton from "../UI/buttons/ThemeButton";
 import Input from "../UI/Input";
 import Image from "next/image";
 import ShowPasswordButton from "../UI/ShowPasswordButton";
-// import { signUpSchema } from "@/lib/schemas/AuthSchemas";
+import ConfirmButton from "../UI/buttons/ConfirmButton";
 
 const signUpSchema = z.object({
   name: z.string().min(2, "För kort").max(50, "För långt"),
@@ -160,6 +160,13 @@ const SignUp = () => {
         <button>Skapa konto</button>
       </form>
       <ThemeButton />
+      <ConfirmButton
+        className="bg-bill rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-off-white"
+        value="Skapa konto"
+        onClick={() => {
+          console.log("hello");
+        }}
+      />
     </div>
   );
 };
