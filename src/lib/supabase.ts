@@ -93,6 +93,7 @@ export interface Database {
           id: number
           is_public: boolean | null
           name: string | null
+          owner_id: string | null
           website_url: string | null
         }
         Insert: {
@@ -101,6 +102,7 @@ export interface Database {
           id?: number
           is_public?: boolean | null
           name?: string | null
+          owner_id?: string | null
           website_url?: string | null
         }
         Update: {
@@ -109,9 +111,17 @@ export interface Database {
           id?: number
           is_public?: boolean | null
           name?: string | null
+          owner_id?: string | null
           website_url?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "services_owner_id_fkey"
+            columns: ["owner_id"]
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       subcriptions_discounts: {
         Row: {
