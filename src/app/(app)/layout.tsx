@@ -34,7 +34,7 @@ const AppLayout = async ({ children }: { children: React.ReactNode }) => {
 
   return (
     <UserContextProvider profile={profile as Profile}>
-      <main className="w-full h-full">{children}</main>
+      <main className="w-full h-full bg-off-white">{children}</main>
       <Menu />
     </UserContextProvider>
   );
