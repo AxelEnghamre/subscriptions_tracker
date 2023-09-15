@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import ThemeButton from "../UI/buttons/ThemeButton";
 import Input from "../UI/Input";
 import Image from "next/image";
-import ShowPasswordButton from "../UI/ShowPasswordButton";
+import ShowPasswordButton from "../UI/buttons/ShowPasswordButton";
 import ConfirmButton from "../UI/buttons/ConfirmButton";
 import GoBackButton from "../UI/buttons/GoBackButton";
 
@@ -83,97 +83,142 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="bg-gradient-to-b from-gradient-top to-gradient-bottom h-full">
-      <GoBackButton
-        onClick={() => {
-          router.push("/sign-in");
-        }}
-      />
-      <Image
-        src="/lightLogo.svg"
-        alt="bill logo"
-        width={300}
-        height={200}
-        priority
-      />
-      <h2>Skapa konto</h2>
+    <div className="bg-gradient-to-b from-loading-gradient-top to-loading-gradient-bottom h-full">
+      <div className="flex justify-center w-full pt-[18px]">
+        <Image
+          src="/lightLogo.svg"
+          alt="bill logo"
+          width={195}
+          height={118}
+          priority
+        />
+      </div>
+
+      <div className="flex flex-col gap-[34px] pl-6">
+        <GoBackButton
+          onClick={() => {
+            router.push("/sign-in");
+          }}
+        />
+        <h2>Skapa konto</h2>
+      </div>
+
       <form action="submit">
-        <div>
-          <label htmlFor="email">Välj e-postadress</label>
-          <Input
-            type="email"
-            name="email"
-            placeholder="bill@example.com"
-            value={signUpFormValue.email}
-            onChange={handleChange}
-            id="email"
-          />
-          <p>{emailError}</p>
-        </div>
-        <div>
-          <label htmlFor="name">Skriv ditt namn</label>
-          <Input
-            type="name"
-            name="name"
-            placeholder="Bill"
-            value={signUpFormValue.name}
-            onChange={handleChange}
-            id="name"
-          />
-          <p>{nameError}</p>
+        <div className="mx-6 pt-[34px] pb-5">
+          <label htmlFor="email">
+            <p>Välj e-postadress</p>
+            <Input
+              className="focus:outline-none"
+              type="email"
+              name="email"
+              placeholder="bill@example.com"
+              value={signUpFormValue.email}
+              onChange={handleChange}
+              id="email"
+            />
+            <p>{emailError}</p>
+          </label>
         </div>
 
-        <div>
-          <label htmlFor="password">Välj lösenord</label>
-          <div>
+        <div className="mx-6 pb-5">
+          <label htmlFor="name">
+            <p>Skriv ditt namn</p>
             <Input
-              type={!showPassword ? "password" : "text"}
-              name="password"
-              placeholder="Ange lösenord"
-              value={signUpFormValue.password}
+              className="focus:outline-none"
+              type="name"
+              name="name"
+              placeholder="Bill"
+              value={signUpFormValue.name}
               onChange={handleChange}
-              id="password"
+              id="name"
             />
-            <ShowPasswordButton
-              onClick={() =>
-                showPassword ? setShowPassword(false) : setShowPassword(true)
-              }
-            />
-            <p>{passwordError}</p>
-          </div>
-          <div>
-            <Input
-              type={!showConfirmPassword ? "password" : "text"}
-              name="confirmPassword"
-              placeholder="Ange lösenord"
-              value={signUpFormValue.confirmPassword}
-              onChange={handleChange}
-              id="confirmPassword"
-            />
-            <ShowPasswordButton
-              onClick={() =>
-                showConfirmPassword
-                  ? setshowConfirmPassword(false)
-                  : setshowConfirmPassword(true)
-              }
-            />
-          </div>
-          <p>{confrimPasswordError}</p>
+            <p>{nameError}</p>
+          </label>
         </div>
-        <p>
-          Genom att skapa ett konto accepterar du våra{" "}
-          <a href="">Regler och Vilkor</a>
-        </p>
-        <button>Skapa konto</button>
+
+        <div className="flex flex-col">
+          <label htmlFor="password">
+            <div className="mx-6 pb-4">
+              <p>Välj lösenord</p>
+              <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full">
+                <Input
+                  className="focus:outline-none"
+                  type={!showPassword ? "password" : "text"}
+                  name="password"
+                  placeholder="Ange lösenord"
+                  value={signUpFormValue.password}
+                  onChange={handleChange}
+                  id="password"
+                />
+                <div className="pr-4">
+                  <ShowPasswordButton
+                    onClick={() =>
+                      showPassword
+                        ? setShowPassword(false)
+                        : setShowPassword(true)
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+            <p>{passwordError}</p>
+          </label>
+
+          <div className="flex flex-col">
+            <label htmlFor="confirmPassword">
+              <div className="mx-6">
+                <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full">
+                  <Input
+                    className="focus:outline-none"
+                    type={!showConfirmPassword ? "password" : "text"}
+                    name="confirmPassword"
+                    placeholder="Upprepa Lösenord"
+                    value={signUpFormValue.confirmPassword}
+                    onChange={handleChange}
+                    id="confirmPassword"
+                  />
+
+                  <div className="pr-4">
+                    <ShowPasswordButton
+                      onClick={() =>
+                        showConfirmPassword
+                          ? setshowConfirmPassword(false)
+                          : setshowConfirmPassword(true)
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
+              <p>{confrimPasswordError}</p>
+            </label>
+          </div>
+        </div>
+
+        <div className="w-full flex flex-col items-center">
+          <div className="flex flex-col text-center">
+            <p>Genom att skapa ett konto accepterar du våra</p>
+            <a href="" className="underline">
+              Regler och Vilkor
+            </a>
+          </div>
+
+          <div>
+            <ConfirmButton
+              className="bg-bill rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-off-white"
+              value="Skapa konto"
+              type="submit"
+              disabled={false}
+              onClick={() => {
+                console.log("hello");
+              }}
+            />
+          </div>
+        </div>
       </form>
-      <ThemeButton />
-      {/* <ConfirmButton
-        className="bg-bill rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-off-white"
-        value="Skapa konto"
-        onClick={() => {
-          console.log("hello");
-        }}
-      /> */}
+
+      <div className="flex w-full justify-center">
+        <ThemeButton />
+      </div>
     </div>
   );
 };
