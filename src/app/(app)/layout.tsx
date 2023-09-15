@@ -25,7 +25,7 @@ const AppLayout = async ({ children }: { children: React.ReactNode }) => {
   const { data: profile} = await supabase
     .schema("public")
     .from("profiles")
-    .select("*")
+    .select("name,icon_url")
     .eq("id", session.user.id)
     .single();
 

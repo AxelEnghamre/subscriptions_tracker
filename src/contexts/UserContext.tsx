@@ -4,7 +4,6 @@ import { createContext, useState } from "react";
 
 type Profile = {
   icon_url?: string;
-  id?: string;
   name?: string;
 };
 
