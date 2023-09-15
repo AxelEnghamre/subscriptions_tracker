@@ -7,8 +7,8 @@ import { useContext } from "react";
 import { ThemeContext } from "@/contexts/ThemeContext";
 import Image from "next/image";
 import ThemeButton from "../UI/buttons/ThemeButton";
-import Input from "../UI/Input";
-import ShowPasswordButton from "../UI/ShowPasswordButton";
+import Input from "../UI/input/Input";
+import ShowPasswordButton from "../UI/buttons/ShowPasswordButton";
 import Link from "next/link";
 import ConfirmButton from "../UI/buttons/ConfirmButton";
 
@@ -174,9 +174,7 @@ const SignIn = () => {
             value="Logga in"
             type="submit"
             disabled={isSigningIn}
-            onClick={() => {
-              console.log("hello");
-            }}
+            onClick={() => {}}
           />
         </div>
       </form>
