@@ -4,7 +4,7 @@ import { z } from "zod";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import ThemeButton from "../UI/buttons/ThemeButton";
-import Input from "../UI/input/Input";
+import Input from "@/components/UI/Input/input";
 import Image from "next/image";
 import ShowPasswordButton from "../UI/buttons/ShowPasswordButton";
 import ConfirmButton from "../UI/buttons/ConfirmButton";
