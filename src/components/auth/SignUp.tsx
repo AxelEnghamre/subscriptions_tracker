@@ -1,10 +1,10 @@
 "use client";
 
 import { z } from "zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import ThemeButton from "../UI/buttons/ThemeButton";
-import Input from "../UI/Input";
+import Input from "../UI/input/Input";
 import Image from "next/image";
 import ShowPasswordButton from "../UI/buttons/ShowPasswordButton";
 import ConfirmButton from "../UI/buttons/ConfirmButton";
@@ -16,6 +16,7 @@ const signUpSchema = z.object({
   password: z.string().min(5, "För kort"),
   confirmPassword: z.string().min(5, "För kort"),
 });
+
 const emailSchema = signUpSchema.pick({ email: true });
 const nameSchema = signUpSchema.pick({ name: true });
 const passwordSchema = signUpSchema.pick({ password: true });
@@ -36,6 +37,21 @@ const SignUp = () => {
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [confrimPasswordError, setConfrimPasswordError] = useState("");
+
+  useEffect(() => {
+    checkPasswordMatch();
+  }, [signUpFormValue.confirmPassword]);
+
+  const checkPasswordMatch = () => {
+    const password = signUpFormValue.password;
+    const confirmPassword = signUpFormValue.confirmPassword;
+
+    if (password != confirmPassword) {
+      setConfrimPasswordError("Lösenorden matchar inte");
+    } else {
+      setConfrimPasswordError("");
+    }
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
@@ -69,16 +85,6 @@ const SignUp = () => {
         setPasswordError(error);
       } else {
         setPasswordError("");
-      }
-    } else if (name === "confirmPassword") {
-      const password = passwordSchema.safeParse({ password: value });
-      const confimrPassword = passwordSchema.safeParse({
-        confirmPassword: value,
-      });
-      if (password != confimrPassword) {
-        setConfrimPasswordError("Lösenorden matchar inte");
-      } else {
-        setConfrimPasswordError("");
       }
     }
   };
