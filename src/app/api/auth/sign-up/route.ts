@@ -18,20 +18,24 @@ const POST = async (request: Request) => {
     const name = validatedData.data.name;
     const password = validatedData.data.password;
 
-    /* TODO: Implement name in the sign up */
-    await supabase.auth.signUp({
+    const signUp = await supabase.auth.signUp({
       email,
       password,
       options: {
-        emailRedirectTo: `${requestUrl.origin}/auth/callback`,
         data: {
           name,
         },
       },
     });
 
-    return NextResponse.redirect(requestUrl.origin, {
-      status: 301,
+    if (signUp.error) {
+      return new Response(JSON.stringify({ message: "Server fel" }), {
+        status: 500,
+      });
+    }
+
+    return new Response(JSON.stringify({ message: "Använadre skapad" }), {
+      status: 200,
     });
   }
 
