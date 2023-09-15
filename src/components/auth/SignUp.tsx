@@ -9,18 +9,19 @@ import Image from "next/image";
 import ShowPasswordButton from "../UI/buttons/ShowPasswordButton";
 import ConfirmButton from "../UI/buttons/ConfirmButton";
 import GoBackButton from "../UI/buttons/GoBackButton";
+import { signUpSchema } from "@/lib/schemas/AuthSchemas";
 
-const signUpSchema = z.object({
+const signUpSchemaCopy = z.object({
   name: z.string().min(2, "För kort").max(50, "För långt"),
   email: z.string().email("Fel format"),
   password: z.string().min(5, "För kort"),
   confirmPassword: z.string().min(5, "För kort"),
 });
 
-const emailSchema = signUpSchema.pick({ email: true });
-const nameSchema = signUpSchema.pick({ name: true });
-const passwordSchema = signUpSchema.pick({ password: true });
-const confirmPasswordSchema = signUpSchema.pick({ confirmPassword: true });
+const emailSchema = signUpSchemaCopy.pick({ email: true });
+const nameSchema = signUpSchemaCopy.pick({ name: true });
+const passwordSchema = signUpSchemaCopy.pick({ password: true });
+const confirmPasswordSchema = signUpSchemaCopy.pick({ confirmPassword: true });
 
 const SignUp = () => {
   // TODO use a component state for the components instead
@@ -37,6 +38,7 @@ const SignUp = () => {
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [confrimPasswordError, setConfrimPasswordError] = useState("");
+  const [isSigningIn, setIsSigningIn] = useState(false);
 
   useEffect(() => {
     checkPasswordMatch();
@@ -51,6 +53,35 @@ const SignUp = () => {
     } else {
       setConfrimPasswordError("");
     }
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSigningIn(true);
+
+    const validatedValues = signUpSchema.safeParse(signUpFormValue);
+
+    // CLIENT VALIDATION
+    if (validatedValues.success) {
+      // console.log("success");
+      try {
+        const res = await fetch("/api/auth/sign-up", {
+          method: "POST",
+          body: JSON.stringify(validatedValues.data),
+        });
+
+        console.log(res);
+        if (res.ok) {
+          // router.replace("/sign-up");
+          // router.refresh();
+        }
+      } catch (error) {
+        // TODO show errors
+        console.log(error);
+      }
+    }
+
+    setIsSigningIn(false);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -109,7 +140,7 @@ const SignUp = () => {
         <h2>Skapa konto</h2>
       </div>
 
-      <form action="submit">
+      <form onSubmit={handleSubmit}>
         <div className="mx-6 pt-[34px] pb-5">
           <label htmlFor="email">
             <p>Välj e-postadress</p>
@@ -214,9 +245,7 @@ const SignUp = () => {
               value="Skapa konto"
               type="submit"
               disabled={false}
-              onClick={() => {
-                console.log("hello");
-              }}
+              onClick={() => {}}
             />
           </div>
         </div>
