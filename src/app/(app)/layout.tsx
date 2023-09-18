@@ -30,8 +30,6 @@ const AppLayout = async ({ children }: { children: React.ReactNode }) => {
     .eq("id", session.user.id)
     .single();
 
-  // console.log(services);
-  // console.log(profile);
 
   return (
     <UserContextProvider profile={profile as Profile}>

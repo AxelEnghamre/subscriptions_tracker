@@ -170,6 +170,7 @@ export interface Database {
           is_public: boolean | null
           owner_id: string | null
           plan: string | null
+          price_per_month: number | null
           service_id: number
         }
         Insert: {
@@ -178,6 +179,7 @@ export interface Database {
           is_public?: boolean | null
           owner_id?: string | null
           plan?: string | null
+          price_per_month?: number | null
           service_id?: number
         }
         Update: {
@@ -186,6 +188,7 @@ export interface Database {
           is_public?: boolean | null
           owner_id?: string | null
           plan?: string | null
+          price_per_month?: number | null
           service_id?: number
         }
         Relationships: [
