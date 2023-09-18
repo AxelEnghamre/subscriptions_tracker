@@ -170,6 +170,7 @@ export interface Database {
           is_public: boolean | null
           owner_id: string | null
           plan: string | null
+          price_per_month: number | null
           service_id: number
         }
         Insert: {
@@ -178,6 +179,7 @@ export interface Database {
           is_public?: boolean | null
           owner_id?: string | null
           plan?: string | null
+          price_per_month?: number | null
           service_id?: number
         }
         Update: {
@@ -186,6 +188,7 @@ export interface Database {
           is_public?: boolean | null
           owner_id?: string | null
           plan?: string | null
+          price_per_month?: number | null
           service_id?: number
         }
         Relationships: [
@@ -227,6 +230,46 @@ export interface Database {
             foreignKeyName: "subscriptions_prices_subscription_id_fkey"
             columns: ["subscription_id"]
             referencedRelation: "subscriptions"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      users_subscriptions: {
+        Row: {
+          id: number
+          notice_period_months: number | null
+          renewal_date: string | null
+          start_date: string
+          subscription_id: number | null
+          user_id: string | null
+        }
+        Insert: {
+          id?: number
+          notice_period_months?: number | null
+          renewal_date?: string | null
+          start_date?: string
+          subscription_id?: number | null
+          user_id?: string | null
+        }
+        Update: {
+          id?: number
+          notice_period_months?: number | null
+          renewal_date?: string | null
+          start_date?: string
+          subscription_id?: number | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "users_subscriptions_subscription_id_fkey"
+            columns: ["subscription_id"]
+            referencedRelation: "subscriptions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "users_subscriptions_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           }
         ]
