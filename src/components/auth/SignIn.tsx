@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { ThemeContext } from "@/contexts/ThemeContext";
 import Image from "next/image";
 import ThemeButton from "../UI/buttons/ThemeButton";
-import Input from "@/components/UI/Input/input";
+import Input from "@/components/UI/input/Input";
 import ShowPasswordButton from "../UI/buttons/ShowPasswordButton";
 import Link from "next/link";
 import ConfirmButton from "../UI/buttons/ConfirmButton";
