@@ -231,6 +231,46 @@ export interface Database {
           }
         ]
       }
+      users_subscriptions: {
+        Row: {
+          id: number
+          notice_period_months: number | null
+          renewal_date: string | null
+          start_date: string
+          subscription_id: number | null
+          user_id: string | null
+        }
+        Insert: {
+          id?: number
+          notice_period_months?: number | null
+          renewal_date?: string | null
+          start_date?: string
+          subscription_id?: number | null
+          user_id?: string | null
+        }
+        Update: {
+          id?: number
+          notice_period_months?: number | null
+          renewal_date?: string | null
+          start_date?: string
+          subscription_id?: number | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "users_subscriptions_subscription_id_fkey"
+            columns: ["subscription_id"]
+            referencedRelation: "subscriptions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "users_subscriptions_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never
