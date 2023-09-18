@@ -86,13 +86,24 @@ const SignIn = () => {
     <div className="bg-gradient-to-b from-loading-gradient-top to-loading-gradient-bottom h-full">
       {/* TODO change logo based on theme*/}
       <div className="w-full flex flex-col items-center justify-center pt-[18px] gap-8 mb-7">
-        <Image
-          src="/lightLogo.svg"
-          alt="bill logo"
-          width={195}
-          height={118}
-          priority
-        />
+        {theme === "dark" && (
+          <Image
+            src="/lightLogo.svg"
+            alt="bill logo"
+            width={195}
+            height={118}
+            priority
+          />
+        )}
+        {theme === "light" && (
+          <Image
+            src="/darkLogo.svg"
+            alt="bill logo"
+            width={195}
+            height={118}
+            priority
+          />
+        )}
 
         <h2 className="text-xl font-normal">Login</h2>
       </div>
