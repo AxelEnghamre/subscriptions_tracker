@@ -6,6 +6,7 @@ import type { Database } from "@/lib/supabase";
 import { redirect } from "next/navigation";
 import Menu from "@/components/menu";
 import { UserContextProvider, Profile } from "@/contexts/UserContext";
+import Search from "@/components/search";
 
 const AppLayout = async ({ children }: { children: React.ReactNode }) => {
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -22,7 +23,7 @@ const AppLayout = async ({ children }: { children: React.ReactNode }) => {
   //   .select("*")
   //   .eq("is_public", true);
 
-  const { data: profile} = await supabase
+  const { data: profile } = await supabase
     .schema("public")
     .from("profiles")
     .select("name,icon_url")
@@ -34,6 +35,7 @@ const AppLayout = async ({ children }: { children: React.ReactNode }) => {
 
   return (
     <UserContextProvider profile={profile as Profile}>
+      <Search />
       <main className="w-full h-full bg-off-white">{children}</main>
       <Menu />
     </UserContextProvider>
