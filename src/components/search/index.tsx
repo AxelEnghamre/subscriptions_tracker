@@ -12,37 +12,38 @@ const Search = () => {
     {
       id: 1,
       name: "Musik",
-      icon: "/lock.svg",
+      icon: "/eye.svg",
     },
     {
       id: 2,
       name: "Nöje",
-      icon: "/lock.svg",
+      icon: "/eye.svg",
     },
     {
       id: 3,
       name: "Livsstil",
-      icon: "/lock.svg",
+      icon: "/eye.svg",
     },
     ,
     {
       id: 4,
       name: "Böcker",
-      icon: "/lock.svg",
+      icon: "/eye.svg",
     },
     ,
     {
       id: 5,
       name: "Spel",
-      icon: "/lock.svg",
+      icon: "/eye.svg",
     },
     ,
     {
       id: 6,
       name: "Träning",
-      icon: "/lock.svg",
+      icon: "/eye.svg",
     },
   ]);
+  const [searchValue, setsearchValue] = useState("");
 
   const handleClick = () => {
     if (navMenuIsOpen) {
@@ -52,6 +53,14 @@ const Search = () => {
       console.log("open");
       setNavMenuIsOpen(true);
     }
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+
+    setsearchValue(value);
+    console.log(searchValue);
+    // TODO show errors
   };
 
   return (
@@ -88,21 +97,19 @@ const Search = () => {
         </div>
       </div>
 
-      <div className="bg-red-400 h-[354px] rounded-b-3xl w-full flex flex-col justify-between">
-        <div className="">
-          <div className="flex flex-row pt-2 items-center">
+      <div className="bg-red-400 h-[354px] rounded-b-3xl w-full flex flex-col justify-between pr-8 pl-6 z-30 absolute">
+        <div className=" flex flex-col gap-10">
+          <div className="flex flex-row pt-2 items-center gap-4">
             <Input
-              className="ml-6"
+              className=""
               type="search"
               name="search"
               placeholder="Sök"
-              value="nvef"
-              onChange={() => {
-                console.log("hello");
-              }}
+              value={searchValue}
+              onChange={handleChange}
               id="search"
             />
-            <p className="mr-8 ml-4">Avbryt</p>
+            <p>Avbryt</p>
           </div>
 
           <div>
@@ -110,10 +117,12 @@ const Search = () => {
               {categoryList.map((data) => {
                 return (
                   <CategoryButton
+                    id={data.id}
                     className="items-center bg-white rounded-3xl"
                     key={data.id}
                     name={data.name}
                     source={data.icon}
+                    value={data.name}
                     onClick={() => {
                       console.log("hello");
                     }}
