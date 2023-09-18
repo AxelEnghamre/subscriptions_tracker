@@ -168,6 +168,7 @@ export interface Database {
           created_at: string
           id: number
           is_public: boolean | null
+          owner_id: string | null
           plan: string | null
           service_id: number
         }
@@ -175,6 +176,7 @@ export interface Database {
           created_at?: string
           id?: number
           is_public?: boolean | null
+          owner_id?: string | null
           plan?: string | null
           service_id?: number
         }
@@ -182,10 +184,17 @@ export interface Database {
           created_at?: string
           id?: number
           is_public?: boolean | null
+          owner_id?: string | null
           plan?: string | null
           service_id?: number
         }
         Relationships: [
+          {
+            foreignKeyName: "subscriptions_owner_id_fkey"
+            columns: ["owner_id"]
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "subscriptions_service_id_fkey"
             columns: ["service_id"]
