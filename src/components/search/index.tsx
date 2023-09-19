@@ -97,7 +97,11 @@ const Search = () => {
         </div>
       </div>
 
-      <div className="bg-red-400 h-[354px] rounded-b-3xl w-full flex flex-col justify-between pr-8 pl-6 z-30 absolute">
+      <div
+        className={`bg-red-400 h-[354px] rounded-b-3xl w-full flex-col justify-between pr-8 pl-6 z-30 absolute ${
+          !navMenuIsOpen ? "hidden" : "flex"
+        }`}
+      >
         <div className=" flex flex-col gap-10">
           <div className="flex flex-row pt-2 items-center gap-4">
             <Input
@@ -113,21 +117,23 @@ const Search = () => {
           </div>
 
           <div>
-            <ul>
+            <ul className="flex flex-row gap-4 flex-wrap">
               {categoryList.map((data) => {
-                return (
-                  <CategoryButton
-                    id={data.id}
-                    className="items-center bg-white rounded-3xl"
-                    key={data.id}
-                    name={data.name}
-                    source={data.icon}
-                    value={data.name}
-                    onClick={() => {
-                      console.log("hello");
-                    }}
-                  />
-                );
+                if (data != undefined) {
+                  return (
+                    <CategoryButton
+                      id={data.id}
+                      className="items-center bg-white rounded-3xl"
+                      key={data.id}
+                      name={data.name}
+                      source={data.icon}
+                      value={data.name}
+                      onClick={() => {
+                        console.log(data.name.toLocaleLowerCase());
+                      }}
+                    />
+                  );
+                }
               })}
             </ul>
           </div>
