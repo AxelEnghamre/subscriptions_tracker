@@ -1,8 +1,9 @@
 "use client";
 
 import { z } from "zod";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/navigation";
+import { ThemeContext } from "@/contexts/ThemeContext";
 import ThemeButton from "../UI/buttons/ThemeButton";
 import Input from "@/components/UI/input/Input";
 import Image from "next/image";
@@ -39,6 +40,7 @@ const SignUp = () => {
   const [passwordError, setPasswordError] = useState("");
   const [confrimPasswordError, setConfrimPasswordError] = useState("");
   const [isSigningIn, setIsSigningIn] = useState(false);
+  const { theme, changeThemeTo } = useContext(ThemeContext) as ThemeContext;
 
   useEffect(() => {
     checkPasswordMatch();
@@ -122,13 +124,24 @@ const SignUp = () => {
   return (
     <div className="bg-gradient-to-b from-loading-gradient-top to-loading-gradient-bottom h-full">
       <div className="flex justify-center w-full pt-[18px]">
-        <Image
-          src="/lightLogo.svg"
-          alt="bill logo"
-          width={195}
-          height={118}
-          priority
-        />
+        {theme === "dark" && (
+          <Image
+            src="/lightLogo.svg"
+            alt="bill logo"
+            width={195}
+            height={118}
+            priority
+          />
+        )}
+        {theme === "light" && (
+          <Image
+            src={"/darkLogo.svg"}
+            alt="bill logo"
+            width={195}
+            height={118}
+            priority
+          />
+        )}
       </div>
 
       <div className="flex flex-col gap-[34px] pl-6">
