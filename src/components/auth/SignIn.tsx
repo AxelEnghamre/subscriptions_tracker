@@ -134,7 +134,9 @@ const SignIn = () => {
                 />
               </div>
 
-              <p>{emailError}</p>
+              <div className="pl-9 text-danger">
+                <p>{emailError}</p>
+              </div>
             </label>
           </div>
 
@@ -170,7 +172,10 @@ const SignIn = () => {
                   />
                 </div>
               </div>
-              <p>{passwordError}</p>
+
+              <div className="pl-9 text-danger">
+                <p>{passwordError}</p>
+              </div>
             </label>
           </div>
         </div>
@@ -181,7 +186,7 @@ const SignIn = () => {
           </a>
         </div>
 
-        <div className="w-full flex justify-center m-5">
+        <div className="w-full flex justify-center p-5">
           <ConfirmButton
             className="bg-button-foreground rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-button-surface"
             value="Logga in"
@@ -192,11 +197,13 @@ const SignIn = () => {
         </div>
       </form>
 
-      <div className=" w-full flex flex-col justify-center items-center gap-8 text-logo">
-        <p>Har du inget konto?</p>
-        <Link href="/sign-up" className="underline">
-          Skapa konto
-        </Link>
+      <div className=" w-full flex flex-col justify-center items-center gap-7 text-logo">
+        <div className="flex gap-2">
+          <p>Har du inget konto?</p>
+          <Link href="/sign-up" className="underline">
+            Skapa konto
+          </Link>
+        </div>
         <ThemeButton />
       </div>
     </div>
