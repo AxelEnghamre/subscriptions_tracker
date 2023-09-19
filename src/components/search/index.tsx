@@ -97,7 +97,11 @@ const Search = () => {
         </div>
       </div>
 
-      <div className="bg-red-400 h-[354px] rounded-b-3xl w-full flex flex-col justify-between pr-8 pl-6 z-30 absolute">
+      <div
+        className={`bg-red-400 h-[354px] rounded-b-3xl w-full flex-col justify-between pr-8 pl-6 z-30 absolute ${
+          !navMenuIsOpen ? "hidden" : "flex"
+        }`}
+      >
         <div className=" flex flex-col gap-10">
           <div className="flex flex-row pt-2 items-center gap-4">
             <Input
