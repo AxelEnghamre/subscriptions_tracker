@@ -5,6 +5,21 @@ import { cookies } from "next/headers";
 import type { Database } from "@/lib/supabase";
 import SubscriptionLink from "@/components/UI/links/SubscriptionLink";
 
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 const Home = async () => {
   const supabase = createServerComponentClient<Database>({ cookies });
 
@@ -14,27 +29,59 @@ const Home = async () => {
     return <p>No session</p>;
   }
 
-  const { data: subscriptions } = await supabase
+  // User subscription query
+  const { data: userSubscriptions } = await supabase
     .schema("public")
     .from("users_subscriptions")
-    .select("*, subscriptions(*,services(*),subscriptions_prices(*))")
+    .select(
+      `
+      id,
+      start_date,
+      renewal_date,
+      notice_period_months, 
+      subscriptions(
+        plan,
+        services(
+          id,
+          name,
+          website_url
+          ),
+        subscriptions_prices(
+          id,
+          price_per_month,
+          created_at
+        )
+      )
+      `,
+    )
     .eq("user_id", session.user.id);
 
-console.log(subscriptions);
+  const totalPrice = userSubscriptions
+    ? userSubscriptions.reduce(
+        (prevPrice, subscription) =>
+          prevPrice +
+          (subscription.subscriptions?.subscriptions_prices.at(-1)
+            ?.price_per_month ?? 0),
+        0,
+      )
+    : 0;
 
   return (
     <div className="flex flex-col gap-5">
-      <p>Home screen</p>
+      <p>
+        Kostnad i {months[new Date().getMonth()]}: {totalPrice}kr
+      </p>
 
-      {subscriptions ? (
+      {userSubscriptions ? (
         <ul>
-          {subscriptions.map((subscription) => (
+          {userSubscriptions.map((subscription) => (
             <li key={subscription.id}>
               <SubscriptionLink
                 name={subscription.subscriptions?.services?.name as string}
                 // iconUrl={subscription.subscriptions?.services?.icon_url as string}
                 pricePerMonth={
-                  subscription.subscriptions?.price_per_month as number
+                  subscription.subscriptions?.subscriptions_prices.at(-1)
+                    ?.price_per_month as number
                 }
               />
             </li>
