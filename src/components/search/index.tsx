@@ -113,21 +113,23 @@ const Search = () => {
           </div>
 
           <div>
-            <ul>
+            <ul className="flex flex-row gap-4 flex-wrap">
               {categoryList.map((data) => {
-                return (
-                  <CategoryButton
-                    id={data.id}
-                    className="items-center bg-white rounded-3xl"
-                    key={data.id}
-                    name={data.name}
-                    source={data.icon}
-                    value={data.name}
-                    onClick={() => {
-                      console.log("hello");
-                    }}
-                  />
-                );
+                if (data != undefined) {
+                  return (
+                    <CategoryButton
+                      id={data.id}
+                      className="items-center bg-white rounded-3xl"
+                      key={data.id}
+                      name={data.name}
+                      source={data.icon}
+                      value={data.name}
+                      onClick={() => {
+                        console.log(data.name.toLocaleLowerCase());
+                      }}
+                    />
+                  );
+                }
               })}
             </ul>
           </div>
