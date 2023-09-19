@@ -113,7 +113,13 @@ const Search = () => {
               onChange={handleChange}
               id="search"
             />
-            <p>Avbryt</p>
+            <p
+              onClick={() => {
+                setsearchValue("");
+              }}
+            >
+              Avbryt
+            </p>
           </div>
 
           <div>
