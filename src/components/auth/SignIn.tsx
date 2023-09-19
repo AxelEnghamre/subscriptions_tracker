@@ -97,7 +97,7 @@ const SignIn = () => {
         )}
         {theme === "light" && (
           <Image
-            src="/darkLogo.svg"
+            src={"/darkLogo.svg"}
             alt="bill logo"
             width={195}
             height={118}
@@ -113,7 +113,7 @@ const SignIn = () => {
           <div className="mx-6">
             <label htmlFor="email">
               <p className="text-login-surface">E-post</p>
-              <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full bg-loginbar-foreground">
+              <div className="flex flex-row items-center rounded-3xl h-12 w-full bg-loginbar-foreground">
                 <div className="pl-4">
                   <Image
                     src={"mail.svg"}
@@ -134,7 +134,7 @@ const SignIn = () => {
                 />
               </div>
 
-              <div className="pl-9 text-danger">
+              <div className="text-danger">
                 <p>{emailError}</p>
               </div>
             </label>
@@ -143,7 +143,7 @@ const SignIn = () => {
           <div className="mx-6">
             <label htmlFor="password">
               <p className="text-login-surface">Lösenord</p>
-              <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full bg-loginbar-foreground">
+              <div className="flex flex-row items-center rounded-3xl h-12 w-full bg-loginbar-foreground">
                 <div className="pl-4">
                   <Image
                     src={"/lock.svg"}
@@ -173,7 +173,7 @@ const SignIn = () => {
                 </div>
               </div>
 
-              <div className="pl-9 text-danger">
+              <div className="text-danger">
                 <p>{passwordError}</p>
               </div>
             </label>

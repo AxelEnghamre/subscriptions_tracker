@@ -137,15 +137,15 @@ const SignUp = () => {
             router.push("/sign-in");
           }}
         />
-        <h2>Skapa konto</h2>
+        <h2 className="text-login-surface">Skapa konto</h2>
       </div>
 
       <form onSubmit={handleSubmit}>
         <div className="mx-6 pt-[34px] pb-5">
           <label htmlFor="email">
-            <p>Välj e-postadress</p>
+            <p className="text-login-surface">Välj e-postadress</p>
             <Input
-              className="focus:outline-none"
+              className="focus:outline-none bg-loginbar-foreground text-loginbar-surface"
               type="email"
               name="email"
               placeholder="bill@example.com"
@@ -153,15 +153,17 @@ const SignUp = () => {
               onChange={handleChange}
               id="email"
             />
-            <p>{emailError}</p>
+            <div className="text-danger">
+              <p>{emailError}</p>
+            </div>
           </label>
         </div>
 
         <div className="mx-6 pb-5">
           <label htmlFor="name">
-            <p>Skriv ditt namn</p>
+            <p className="text-login-surface">Skriv ditt namn</p>
             <Input
-              className="focus:outline-none"
+              className="focus:outline-none bg-loginbar-foreground text-loginbar-surface"
               type="name"
               name="name"
               placeholder="Bill"
@@ -169,17 +171,20 @@ const SignUp = () => {
               onChange={handleChange}
               id="name"
             />
-            <p>{nameError}</p>
+
+            <div className="text-danger">
+              <p>{nameError}</p>
+            </div>
           </label>
         </div>
 
         <div className="flex flex-col">
           <label htmlFor="password">
             <div className="mx-6 pb-4">
-              <p>Välj lösenord</p>
-              <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full">
+              <p className="text-login-surface">Välj lösenord</p>
+              <div className="flex flex-row items-center rounded-3xl bg-loginbar-foreground h-12 w-full">
                 <Input
-                  className="focus:outline-none"
+                  className="focus:outline-none bg-loginbar-foreground text-loginbar-surface"
                   type={!showPassword ? "password" : "text"}
                   name="password"
                   placeholder="Ange lösenord"
@@ -197,16 +202,19 @@ const SignUp = () => {
                   />
                 </div>
               </div>
+
+              <div className="text-danger">
+                <p>{passwordError}</p>
+              </div>
             </div>
-            <p>{passwordError}</p>
           </label>
 
           <div className="flex flex-col">
             <label htmlFor="confirmPassword">
               <div className="mx-6">
-                <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full">
+                <div className="flex flex-row items-center rounded-3xl bg-loginbar-foreground h-12 w-full">
                   <Input
-                    className="focus:outline-none"
+                    className="focus:outline-none bg-loginbar-foreground text-loginbar-surface"
                     type={!showConfirmPassword ? "password" : "text"}
                     name="confirmPassword"
                     placeholder="Upprepa Lösenord"
@@ -225,23 +233,28 @@ const SignUp = () => {
                     />
                   </div>
                 </div>
+
+                <div className="text-danger">
+                  <p>{confrimPasswordError}</p>
+                </div>
               </div>
-              <p>{confrimPasswordError}</p>
             </label>
           </div>
         </div>
 
         <div className="w-full flex flex-col items-center">
           <div className="flex flex-col text-center">
-            <p>Genom att skapa ett konto accepterar du våra</p>
-            <a href="" className="underline">
+            <p className="text-logo">
+              Genom att skapa ett konto accepterar du våra
+            </p>
+            <a href="" className="underline text-logo">
               Regler och Vilkor
             </a>
           </div>
 
           <div>
             <ConfirmButton
-              className="bg-bill rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-off-white"
+              className="bg-button-foreground rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-button-surface"
               value="Skapa konto"
               type="submit"
               disabled={false}

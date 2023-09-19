@@ -17,7 +17,7 @@ const Input = ({
 }) => {
   return (
     <input
-      className={` bg-off-white text-midnight rounded-3xl h-12 w-full pl-4 pr-4 ${className}`}
+      className={`rounded-3xl h-12 w-full pl-4 pr-4 ${className}`}
       type={type}
       name={name}
       placeholder={placeholder}
