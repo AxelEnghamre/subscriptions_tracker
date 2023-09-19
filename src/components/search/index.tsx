@@ -105,7 +105,7 @@ const Search = () => {
         <div className=" flex flex-col gap-10">
           <div className="flex flex-row pt-2 items-center gap-4">
             <Input
-              className=""
+              className="focus:outline-none border-solid border-bill border-[1px] appearance-none"
               type="search"
               name="search"
               placeholder="Sök"

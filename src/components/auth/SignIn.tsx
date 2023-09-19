@@ -105,15 +105,15 @@ const SignIn = () => {
           />
         )}
 
-        <h2 className="text-xl font-normal">Login</h2>
+        <h2 className="text-xl font-normal text-login-surface">Login</h2>
       </div>
 
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-8">
           <div className="mx-6">
             <label htmlFor="email">
-              <p>E-post</p>
-              <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full">
+              <p className="text-login-surface">E-post</p>
+              <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full bg-loginbar-foreground">
                 <div className="pl-4">
                   <Image
                     src={"mail.svg"}
@@ -124,7 +124,7 @@ const SignIn = () => {
                 </div>
 
                 <Input
-                  className="focus:outline-none"
+                  className="focus:outline-none bg-loginbar-foreground text-loginbar-surface placeholder-loginbar-surface"
                   type="email"
                   name="email"
                   placeholder="Ange e-postadress"
@@ -140,8 +140,8 @@ const SignIn = () => {
 
           <div className="mx-6">
             <label htmlFor="password">
-              <p>Lösenord</p>
-              <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full">
+              <p className="text-login-surface">Lösenord</p>
+              <div className="flex flex-row items-center rounded-3xl bg-off-white h-12 w-full bg-loginbar-foreground">
                 <div className="pl-4">
                   <Image
                     src={"/lock.svg"}
@@ -151,7 +151,7 @@ const SignIn = () => {
                   />
                 </div>
                 <Input
-                  className="focus:outline-none"
+                  className="focus:outline-none bg-loginbar-foreground text-loginbar-surface placeholder-loginbar-surface"
                   type={!showPassword ? "password" : "text"}
                   name="password"
                   placeholder="Ange lösenord"
@@ -176,12 +176,14 @@ const SignIn = () => {
         </div>
 
         <div className="w-full flex justify-end pr-6 underline">
-          <a href="">Glömmt ditt lösenord?</a>
+          <a href="" className="text-login-surface">
+            Glömmt ditt lösenord?
+          </a>
         </div>
 
         <div className="w-full flex justify-center m-5">
           <ConfirmButton
-            className="bg-bill rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-off-white"
+            className="bg-button-foreground rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-button-surface"
             value="Logga in"
             type="submit"
             disabled={isSigningIn}
@@ -190,7 +192,7 @@ const SignIn = () => {
         </div>
       </form>
 
-      <div className=" w-full flex flex-col justify-center items-center gap-8">
+      <div className=" w-full flex flex-col justify-center items-center gap-8 text-logo">
         <p>Har du inget konto?</p>
         <Link href="/sign-up" className="underline">
           Skapa konto
