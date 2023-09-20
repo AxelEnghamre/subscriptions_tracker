@@ -156,9 +156,9 @@ const SignUp = () => {
       <form onSubmit={handleSubmit}>
         <div className="mx-6 pt-[34px] pb-5">
           <label htmlFor="email">
-            <p className="text-login-surface">Välj e-postadress</p>
+            <p className="text-login-surface font-inter">Välj e-postadress</p>
             <Input
-              className="focus:outline-none bg-loginbar-foreground text-loginbar-surface"
+              className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
               type="email"
               name="email"
               placeholder="bill@example.com"
@@ -166,7 +166,7 @@ const SignUp = () => {
               onChange={handleChange}
               id="email"
             />
-            <div className="text-danger">
+            <div className="text-danger font-inter">
               <p>{emailError}</p>
             </div>
           </label>
@@ -174,9 +174,9 @@ const SignUp = () => {
 
         <div className="mx-6 pb-5">
           <label htmlFor="name">
-            <p className="text-login-surface">Skriv ditt namn</p>
+            <p className="text-login-surface font-inter">Skriv ditt namn</p>
             <Input
-              className="focus:outline-none bg-loginbar-foreground text-loginbar-surface"
+              className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
               type="name"
               name="name"
               placeholder="Bill"
@@ -185,7 +185,7 @@ const SignUp = () => {
               id="name"
             />
 
-            <div className="text-danger">
+            <div className="text-danger font-inter">
               <p>{nameError}</p>
             </div>
           </label>
@@ -194,10 +194,10 @@ const SignUp = () => {
         <div className="flex flex-col">
           <label htmlFor="password">
             <div className="mx-6 pb-4">
-              <p className="text-login-surface">Välj lösenord</p>
+              <p className="text-login-surface font-inter">Välj lösenord</p>
               <div className="flex flex-row items-center rounded-3xl bg-loginbar-foreground h-12 w-full">
                 <Input
-                  className="focus:outline-none bg-loginbar-foreground text-loginbar-surface"
+                  className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
                   type={!showPassword ? "password" : "text"}
                   name="password"
                   placeholder="Ange lösenord"
@@ -216,7 +216,7 @@ const SignUp = () => {
                 </div>
               </div>
 
-              <div className="text-danger">
+              <div className="text-danger font-inter">
                 <p>{passwordError}</p>
               </div>
             </div>
@@ -227,7 +227,7 @@ const SignUp = () => {
               <div className="mx-6">
                 <div className="flex flex-row items-center rounded-3xl bg-loginbar-foreground h-12 w-full">
                   <Input
-                    className="focus:outline-none bg-loginbar-foreground text-loginbar-surface"
+                    className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
                     type={!showConfirmPassword ? "password" : "text"}
                     name="confirmPassword"
                     placeholder="Upprepa Lösenord"
@@ -247,7 +247,7 @@ const SignUp = () => {
                   </div>
                 </div>
 
-                <div className="text-danger">
+                <div className="text-danger font-inter">
                   <p>{confrimPasswordError}</p>
                 </div>
               </div>
@@ -256,18 +256,18 @@ const SignUp = () => {
         </div>
 
         <div className="w-full flex flex-col items-center">
-          <div className="flex flex-col text-center">
+          <div className="flex flex-col text-center font-inter">
             <p className="text-logo">
               Genom att skapa ett konto accepterar du våra
             </p>
-            <a href="" className="underline text-logo">
+            <a href="" className="underline text-logo font-bold">
               Regler och Vilkor
             </a>
           </div>
 
           <div>
             <ConfirmButton
-              className="bg-button-foreground rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-button-surface"
+              className="bg-button-foreground rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-button-surface font-inter"
               value="Skapa konto"
               type="submit"
               disabled={false}
