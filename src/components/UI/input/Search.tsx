@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Input from "../UI/input/Input";
-import CategoryButton from "../UI/buttons/CategoryButton";
+import Input from "./Input";
+import CategoryButton from "../buttons/CategoryButton";
 
 const Search = () => {
   const [navMenuIsOpen, setNavMenuIsOpen] = useState(false);

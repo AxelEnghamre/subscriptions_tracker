@@ -6,7 +6,7 @@ import type { Database } from "@/lib/supabase";
 import { redirect } from "next/navigation";
 import Menu from "@/components/menu";
 import { UserContextProvider, Profile } from "@/contexts/UserContext";
-import Search from "@/components/search";
+import Search from "@/components/UI/input/Search";
 
 const AppLayout = async ({ children }: { children: React.ReactNode }) => {
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -29,7 +29,6 @@ const AppLayout = async ({ children }: { children: React.ReactNode }) => {
     .select("name,icon_url")
     .eq("id", session.user.id)
     .single();
-
 
   return (
     <UserContextProvider profile={profile as Profile}>
