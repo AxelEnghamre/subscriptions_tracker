@@ -26,6 +26,8 @@ const SignIn = () => {
   const [passwordError, setPasswordError] = useState("");
   const [isSigningIn, setIsSigningIn] = useState(false);
   const { theme, changeThemeTo } = useContext(ThemeContext) as ThemeContext;
+  const [signInFail, setSignInFail] = useState(false);
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSigningIn(true);
@@ -43,6 +45,8 @@ const SignIn = () => {
         if (res.ok) {
           router.replace("/");
           router.refresh();
+        } else {
+          setSignInFail(true);
         }
       } catch (error) {
         // TODO show errors
@@ -118,6 +122,10 @@ const SignIn = () => {
         )}
 
         <h2 className="text-xl font-normal text-login-surface">Login</h2>
+
+        {signInFail && (
+          <p className="text-danger">Något gick fel, försök igen</p>
+        )}
       </div>
 
       <form onSubmit={handleSubmit}>
