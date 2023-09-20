@@ -81,6 +81,22 @@ const SignUp = () => {
         // TODO show errors
         console.log(error);
       }
+    } else {
+      const errors = validatedValues.error.errors;
+
+      console.log(validatedValues.error);
+
+      errors.forEach((error) => {
+        if (error.path[0] === "email") {
+          setEmailError(error.message);
+        } else if (error.path[0] === "name") {
+          setNameError(error.message);
+        } else if (error.path[0] === "password") {
+          setPasswordError(error.message);
+        } else if (error.path[0] === "confirmPassword") {
+          setConfrimPasswordError(error.message);
+        }
+      });
     }
 
     setIsSigningIn(false);
