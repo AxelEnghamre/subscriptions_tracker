@@ -43,6 +43,7 @@ const SignUp = () => {
   const { theme, changeThemeTo } = useContext(ThemeContext) as ThemeContext;
   const [terms, setTerms] = useState(false);
   const [confirmationPopUp, setConfirmationPopUp] = useState(false);
+  const [signUpFail, setSignUpFail] = useState(false);
 
   useEffect(() => {
     checkPasswordMatch();
@@ -78,6 +79,9 @@ const SignUp = () => {
           // router.replace("/sign-up");
           // router.refresh();
           setConfirmationPopUp(true);
+          setSignUpFail(false);
+        } else {
+          setSignUpFail(true);
         }
       } catch (error) {
         // TODO show errors
@@ -140,7 +144,7 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="bg-gradient-to-b from-loading-gradient-top to-loading-gradient-bottom h-full">
+    <div className="bg-gradient-to-b from-loading-gradient-top to-loading-gradient-bottom h-full overflow-y-scroll pb-20">
       {terms && (
         <div className="w-full h-full flex justify-center items-center bg-transparent">
           <div className="absolute bg-off-white w-4/5 h-4/5 z-20">
@@ -176,6 +180,14 @@ const SignUp = () => {
           />
         )}
       </div>
+
+      <div className="w-full flex items-center justify-center font-inter">
+        {confirmationPopUp && <p className="text-music">Kontot är skapat</p>}
+        {signUpFail && (
+          <p className="text-danger">Något gick fel, försök igen</p>
+        )}
+      </div>
+
       <div className="flex flex-col gap-[34px] pl-6">
         <GoBackButton
           onClick={() => {
@@ -183,8 +195,6 @@ const SignUp = () => {
           }}
         />
         <h2 className="text-login-surface">Skapa konto</h2>
-
-        {confirmationPopUp && <div>Successfully created account</div>}
       </div>
       <form onSubmit={handleSubmit}>
         <div className="mx-6 pt-[34px] pb-5">
