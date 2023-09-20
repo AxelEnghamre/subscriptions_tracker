@@ -51,6 +51,8 @@ const SignIn = () => {
     } else {
       const errors = validatedValues.error.errors;
 
+      console.log(validatedValues.error);
+
       errors.forEach((error) => {
         if (error.path[0] === "password") {
           setPasswordError(error.message);
@@ -93,7 +95,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-loading-gradient-top to-loading-gradient-bottom h-full">
+    <div className="bg-gradient-to-b from-loading-gradient-top to-loading-gradient-bottom h-full overflow-y-scroll pb-20">
       {/* TODO change logo based on theme*/}
       <div className="w-full flex flex-col items-center justify-center pt-[18px] gap-8 mb-7">
         {theme === "dark" && (
