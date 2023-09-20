@@ -11,12 +11,13 @@ import ShowPasswordButton from "../UI/buttons/ShowPasswordButton";
 import ConfirmButton from "../UI/buttons/ConfirmButton";
 import GoBackButton from "../UI/buttons/GoBackButton";
 import { signUpSchema } from "@/lib/schemas/AuthSchemas";
+import TermsPopUp from "../UI/popUps/TermsPopUp";
 
 const signUpSchemaCopy = z.object({
   name: z.string().min(2, "För kort").max(50, "För långt"),
   email: z.string().email("Fel format"),
-  password: z.string().min(5, "För kort"),
-  confirmPassword: z.string().min(5, "För kort"),
+  password: z.string().min(6, "För kort"),
+  confirmPassword: z.string().min(6, "För kort"),
 });
 
 const emailSchema = signUpSchemaCopy.pick({ email: true });
@@ -41,6 +42,9 @@ const SignUp = () => {
   const [confrimPasswordError, setConfrimPasswordError] = useState("");
   const [isSigningIn, setIsSigningIn] = useState(false);
   const { theme, changeThemeTo } = useContext(ThemeContext) as ThemeContext;
+  const [terms, setTerms] = useState(false);
+  const [confirmationPopUp, setConfirmationPopUp] = useState(false);
+  const [signUpFail, setSignUpFail] = useState(false);
 
   useEffect(() => {
     checkPasswordMatch();
@@ -65,7 +69,6 @@ const SignUp = () => {
 
     // CLIENT VALIDATION
     if (validatedValues.success) {
-      // console.log("success");
       try {
         const res = await fetch("/api/auth/sign-up", {
           method: "POST",
@@ -76,6 +79,10 @@ const SignUp = () => {
         if (res.ok) {
           // router.replace("/sign-up");
           // router.refresh();
+          setConfirmationPopUp(true);
+          setSignUpFail(false);
+        } else {
+          setSignUpFail(true);
         }
       } catch (error) {
         // TODO show errors
@@ -138,7 +145,17 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="bg-gradient-to-b from-loading-gradient-top to-loading-gradient-bottom h-full">
+    <div className="bg-gradient-to-b from-loading-gradient-top to-loading-gradient-bottom h-full overflow-y-scroll pb-20">
+      {terms && (
+        <div>
+          <TermsPopUp
+            onClick={() => {
+              setTerms(false);
+            }}
+          />
+        </div>
+      )}
+
       <div className="flex justify-center w-full pt-[18px]">
         {theme === "dark" && (
           <Image
@@ -160,6 +177,13 @@ const SignUp = () => {
         )}
       </div>
 
+      <div className="w-full flex items-center justify-center font-inter">
+        {confirmationPopUp && <p className="text-music">Kontot är skapat</p>}
+        {signUpFail && (
+          <p className="text-danger">Något gick fel, försök igen</p>
+        )}
+      </div>
+
       <div className="flex flex-col gap-[34px] pl-6">
         <GoBackButton
           onClick={() => {
@@ -168,8 +192,7 @@ const SignUp = () => {
         />
         <h2 className="text-login-surface">Skapa konto</h2>
       </div>
-
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="pb-12">
         <div className="mx-6 pt-[34px] pb-5">
           <label htmlFor="email">
             <p className="text-login-surface font-inter">Välj e-postadress</p>
@@ -271,14 +294,19 @@ const SignUp = () => {
           </div>
         </div>
 
-        <div className="w-full flex flex-col items-center">
+        <div className="w-full flex flex-col items-center pt-10 gap-6">
           <div className="flex flex-col text-center font-inter">
             <p className="text-logo">
               Genom att skapa ett konto accepterar du våra
             </p>
-            <a href="" className="underline text-logo font-bold">
+            <p
+              className="underline text-logo font-bold"
+              onClick={() => {
+                setTerms(true);
+              }}
+            >
               Regler och Vilkor
-            </a>
+            </p>
           </div>
 
           <div>
@@ -292,7 +320,6 @@ const SignUp = () => {
           </div>
         </div>
       </form>
-
       <div className="flex w-full justify-center">
         <ThemeButton />
       </div>

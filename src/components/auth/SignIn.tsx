@@ -26,6 +26,8 @@ const SignIn = () => {
   const [passwordError, setPasswordError] = useState("");
   const [isSigningIn, setIsSigningIn] = useState(false);
   const { theme, changeThemeTo } = useContext(ThemeContext) as ThemeContext;
+  const [signInFail, setSignInFail] = useState(false);
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSigningIn(true);
@@ -43,6 +45,8 @@ const SignIn = () => {
         if (res.ok) {
           router.replace("/");
           router.refresh();
+        } else {
+          setSignInFail(true);
         }
       } catch (error) {
         // TODO show errors
@@ -50,6 +54,8 @@ const SignIn = () => {
       }
     } else {
       const errors = validatedValues.error.errors;
+
+      console.log(validatedValues.error);
 
       errors.forEach((error) => {
         if (error.path[0] === "password") {
@@ -93,7 +99,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-loading-gradient-top to-loading-gradient-bottom h-full">
+    <div className="bg-gradient-to-b from-loading-gradient-top to-loading-gradient-bottom h-full overflow-y-scroll pb-20">
       {/* TODO change logo based on theme*/}
       <div className="w-full flex flex-col items-center justify-center pt-[18px] gap-8 mb-7">
         {theme === "dark" && (
@@ -116,6 +122,10 @@ const SignIn = () => {
         )}
 
         <h2 className="text-xl font-normal text-login-surface">Login</h2>
+
+        {signInFail && (
+          <p className="text-danger font-inter">Något gick fel, försök igen</p>
+        )}
       </div>
 
       <form onSubmit={handleSubmit}>

@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Input from "../UI/input/Input";
-import CategoryButton from "../UI/buttons/CategoryButton";
+import Input from "./Input";
+import CategoryButton from "../buttons/CategoryButton";
 
 const Search = () => {
   const [navMenuIsOpen, setNavMenuIsOpen] = useState(false);
@@ -12,35 +12,35 @@ const Search = () => {
     {
       id: 1,
       name: "Musik",
-      icon: "/eye.svg",
+      icon: "/music.svg",
     },
     {
       id: 2,
       name: "Nöje",
-      icon: "/eye.svg",
+      icon: "/pleasure.svg",
     },
     {
       id: 3,
       name: "Livsstil",
-      icon: "/eye.svg",
+      icon: "/lifestyle.svg",
     },
     ,
     {
       id: 4,
       name: "Böcker",
-      icon: "/eye.svg",
+      icon: "/books.svg",
     },
     ,
     {
       id: 5,
       name: "Spel",
-      icon: "/eye.svg",
+      icon: "/games.svg",
     },
     ,
     {
       id: 6,
       name: "Träning",
-      icon: "/eye.svg",
+      icon: "/fitness.svg",
     },
   ]);
   const [searchValue, setsearchValue] = useState("");
@@ -98,14 +98,14 @@ const Search = () => {
       </div>
 
       <div
-        className={`bg-red-400 h-[354px] rounded-b-3xl w-full flex-col justify-between pr-8 pl-6 z-30 absolute ${
+        className={`bg-red-400 h-[auto] rounded-b-3xl w-full flex-col pr-8 pl-6 absolute gap-8 ${
           !navMenuIsOpen ? "hidden" : "flex"
         }`}
       >
         <div className=" flex flex-col gap-10">
           <div className="flex flex-row pt-2 items-center gap-4">
             <Input
-              className="focus:outline-none border-solid border-bill border-[1px] appearance-none"
+              className="focus:outline-none border-solid border-bill border-[2px] appearance-none"
               type="search"
               name="search"
               placeholder="Sök"
