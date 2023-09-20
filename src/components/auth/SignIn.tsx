@@ -48,6 +48,16 @@ const SignIn = () => {
         // TODO show errors
         console.log(error);
       }
+    } else {
+      const errors = validatedValues.error.errors;
+
+      errors.forEach((error) => {
+        if (error.path[0] === "password") {
+          setPasswordError(error.message);
+        } else if (error.path[0] === "email") {
+          setEmailError(error.message);
+        }
+      });
     }
 
     setIsSigningIn(false);
@@ -112,7 +122,7 @@ const SignIn = () => {
         <div className="flex flex-col gap-8">
           <div className="mx-6">
             <label htmlFor="email">
-              <p className="text-login-surface">E-post</p>
+              <p className="text-login-surface font-inter">E-post</p>
               <div className="flex flex-row items-center rounded-3xl h-12 w-full bg-loginbar-foreground">
                 <div className="pl-4">
                   <Image
@@ -124,7 +134,7 @@ const SignIn = () => {
                 </div>
 
                 <Input
-                  className="focus:outline-none bg-loginbar-foreground text-loginbar-surface placeholder-loginbar-surface"
+                  className="focus:outline-none bg-loginbar-foreground text-loginbar-surface placeholder-loginbar-surface font-inter"
                   type="email"
                   name="email"
                   placeholder="Ange e-postadress"
@@ -134,7 +144,7 @@ const SignIn = () => {
                 />
               </div>
 
-              <div className="text-danger">
+              <div className="text-danger font-inter">
                 <p>{emailError}</p>
               </div>
             </label>
@@ -142,7 +152,7 @@ const SignIn = () => {
 
           <div className="mx-6">
             <label htmlFor="password">
-              <p className="text-login-surface">Lösenord</p>
+              <p className="text-login-surface font-inter">Lösenord</p>
               <div className="flex flex-row items-center rounded-3xl h-12 w-full bg-loginbar-foreground">
                 <div className="pl-4">
                   <Image
@@ -153,7 +163,7 @@ const SignIn = () => {
                   />
                 </div>
                 <Input
-                  className="focus:outline-none bg-loginbar-foreground text-loginbar-surface placeholder-loginbar-surface"
+                  className="focus:outline-none bg-loginbar-foreground text-loginbar-surface placeholder-loginbar-surface font-inter"
                   type={!showPassword ? "password" : "text"}
                   name="password"
                   placeholder="Ange lösenord"
@@ -173,22 +183,24 @@ const SignIn = () => {
                 </div>
               </div>
 
-              <div className="text-danger">
-                <p>{passwordError}</p>
+              <div className="w-full flex justify-between pt-2 ">
+                <div className="text-danger font-inter">
+                  <p>{passwordError}</p>
+                </div>
+                <a
+                  href="/sign-in"
+                  className="text-login-surface underline font-inter"
+                >
+                  Glömmt ditt lösenord?
+                </a>
               </div>
             </label>
           </div>
         </div>
 
-        <div className="w-full flex justify-end pr-6 underline">
-          <a href="" className="text-login-surface">
-            Glömmt ditt lösenord?
-          </a>
-        </div>
-
         <div className="w-full flex justify-center p-5">
           <ConfirmButton
-            className="bg-button-foreground rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-button-surface"
+            className="bg-button-foreground rounded-[1.875rem] pb-4 pt-4 pl-6 pr-6 text-button-surface font-inter"
             value="Logga in"
             type="submit"
             disabled={isSigningIn}
@@ -198,9 +210,9 @@ const SignIn = () => {
       </form>
 
       <div className=" w-full flex flex-col justify-center items-center gap-7 text-logo">
-        <div className="flex gap-2">
+        <div className="flex gap-2 font-inter">
           <p>Har du inget konto?</p>
-          <Link href="/sign-up" className="underline">
+          <Link href="/sign-up" className="underline font-bold">
             Skapa konto
           </Link>
         </div>
