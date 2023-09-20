@@ -77,6 +77,7 @@ const Home = async () => {
           {userSubscriptions.map((subscription) => (
             <li key={subscription.id}>
               <SubscriptionLink
+                id={subscription.id}
                 name={subscription.subscriptions?.services?.name as string}
                 // iconUrl={subscription.subscriptions?.services?.icon_url as string}
                 pricePerMonth={

@@ -5,14 +5,16 @@ const SubscriptionLink = ({
   name,
   iconUrl = "/unknown.svg",
   pricePerMonth,
+  id,
 }: {
   name: string;
   iconUrl?: string;
   pricePerMonth: number;
+  id: string | number;
 }) => {
   return (
     <Link
-      href={`/subscription/${name}`}
+      href={`/subscription/${id}`}
       className="w-24 h-24 p-4 rounded-2xl bg-white text-xs shadow-lg flex flex-col items-center gap-1"
     >
       <div className="relative h-12 w-12">
