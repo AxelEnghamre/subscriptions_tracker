@@ -153,18 +153,6 @@ const SignUp = () => {
               setTerms(false);
             }}
           />
-          {/* <div className="fixed inset-0 w-full h-full flex justify-center items-center bg-transparent z-30 ">
-            <div className="bg-off-white w-4/5 h-4/5">
-              <div
-                className=""
-                onClick={() => {
-                  setTerms(false);
-                }}
-              >
-                <p>Stäng</p>
-              </div>
-            </div>
-          </div> */}
         </div>
       )}
 
