@@ -11,6 +11,7 @@ import ShowPasswordButton from "../UI/buttons/ShowPasswordButton";
 import ConfirmButton from "../UI/buttons/ConfirmButton";
 import GoBackButton from "../UI/buttons/GoBackButton";
 import { signUpSchema } from "@/lib/schemas/AuthSchemas";
+import TermsPopUp from "../UI/popUps/TermsPopUp";
 
 const signUpSchemaCopy = z.object({
   name: z.string().min(2, "För kort").max(50, "För långt"),
@@ -146,17 +147,24 @@ const SignUp = () => {
   return (
     <div className="bg-gradient-to-b from-loading-gradient-top to-loading-gradient-bottom h-full overflow-y-scroll pb-20">
       {terms && (
-        <div className="w-full h-full flex justify-center items-center bg-transparent">
-          <div className="absolute bg-off-white w-4/5 h-4/5 z-20">
-            <div
-              className=""
-              onClick={() => {
-                setTerms(false);
-              }}
-            >
-              <p>Stäng</p>
+        <div>
+          <TermsPopUp
+            onClick={() => {
+              setTerms(false);
+            }}
+          />
+          {/* <div className="fixed inset-0 w-full h-full flex justify-center items-center bg-transparent z-30 ">
+            <div className="bg-off-white w-4/5 h-4/5">
+              <div
+                className=""
+                onClick={() => {
+                  setTerms(false);
+                }}
+              >
+                <p>Stäng</p>
+              </div>
             </div>
-          </div>
+          </div> */}
         </div>
       )}
 
@@ -196,7 +204,7 @@ const SignUp = () => {
         />
         <h2 className="text-login-surface">Skapa konto</h2>
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="pb-12">
         <div className="mx-6 pt-[34px] pb-5">
           <label htmlFor="email">
             <p className="text-login-surface font-inter">Välj e-postadress</p>
@@ -298,7 +306,7 @@ const SignUp = () => {
           </div>
         </div>
 
-        <div className="w-full flex flex-col items-center">
+        <div className="w-full flex flex-col items-center pt-10 gap-6">
           <div className="flex flex-col text-center font-inter">
             <p className="text-logo">
               Genom att skapa ett konto accepterar du våra

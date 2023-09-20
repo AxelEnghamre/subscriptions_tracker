@@ -124,7 +124,7 @@ const SignIn = () => {
         <h2 className="text-xl font-normal text-login-surface">Login</h2>
 
         {signInFail && (
-          <p className="text-danger">Något gick fel, försök igen</p>
+          <p className="text-danger font-inter">Något gick fel, försök igen</p>
         )}
       </div>
 
