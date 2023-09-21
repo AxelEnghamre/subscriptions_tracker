@@ -6,6 +6,7 @@ import type { Database } from "@/lib/supabase";
 import GoHomeButton from "@/components/UI/buttons/GoHomeButton";
 import PriceHistory from "@/components/UI/charts/PriceHistory";
 import { redirect } from "next/navigation";
+import Image from "next/image";
 
 const Subscription = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
@@ -32,7 +33,8 @@ const Subscription = async ({ params }: { params: { id: string } }) => {
         services(
           id,
           name,
-          website_url
+          website_url,
+          icon_url
           ),
         subscriptions_prices(
           id,
@@ -64,11 +66,20 @@ const Subscription = async ({ params }: { params: { id: string } }) => {
       },
     );
 
+  const { data: icon } = supabase.storage
+    .from("services")
+    .getPublicUrl(subscription.subscriptions?.services?.icon_url as string);
+
   return (
     <>
       <GoHomeButton />
       <div className="w-full px-6 flex flex-col gap-5 items-center">
-        <p>Icon here</p>
+        <Image
+          src={icon.publicUrl}
+          alt={subscription.subscriptions?.services?.name as string}
+          width={300}
+          height={300}
+        />
         <p>{subscription?.subscriptions?.services?.name}</p>
         <p>category here</p>
         <div className="flex flex-row gap-2 items-center">
