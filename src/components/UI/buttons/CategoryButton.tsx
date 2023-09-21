@@ -12,7 +12,7 @@ const CategoryButton = ({
   name: string;
   source: string;
   onClick: Function;
-  id: number;
+  id: string;
   value: string;
 }) => {
   const handleClick = () => {

@@ -5,53 +5,67 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Input from "./Input";
 import CategoryButton from "../buttons/CategoryButton";
+import Notifications from "../dropdowns/Notifications";
 
 const Search = () => {
   const [navMenuIsOpen, setNavMenuIsOpen] = useState(false);
+  const [notificationsMenu, setNotificationsMenu] = useState(false);
   const [categoryList, setCategoryList] = useState([
     {
-      id: 1,
+      id: "musik",
       name: "Musik",
       icon: "/music.svg",
     },
     {
-      id: 2,
+      id: "nöje",
       name: "Nöje",
       icon: "/pleasure.svg",
     },
     {
-      id: 3,
+      id: "livsstil",
       name: "Livsstil",
       icon: "/lifestyle.svg",
     },
     ,
     {
-      id: 4,
+      id: "böcker",
       name: "Böcker",
       icon: "/books.svg",
     },
     ,
     {
-      id: 5,
+      id: "spel",
       name: "Spel",
       icon: "/games.svg",
     },
     ,
     {
-      id: 6,
+      id: "träning",
       name: "Träning",
       icon: "/fitness.svg",
     },
   ]);
   const [searchValue, setsearchValue] = useState("");
 
-  const handleClick = () => {
-    if (navMenuIsOpen) {
-      console.log("closed");
-      setNavMenuIsOpen(false);
-    } else {
-      console.log("open");
-      setNavMenuIsOpen(true);
+  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const iconClicked = event.currentTarget.id;
+
+    console.log(iconClicked);
+
+    if (iconClicked === "search") {
+      if (navMenuIsOpen) {
+        setNavMenuIsOpen(false);
+      } else {
+        setNavMenuIsOpen(true);
+        setNotificationsMenu(false);
+      }
+    } else if (iconClicked === "notifications") {
+      if (notificationsMenu) {
+        setNotificationsMenu(false);
+      } else {
+        setNavMenuIsOpen(false);
+        setNotificationsMenu(true);
+      }
     }
   };
 
@@ -60,12 +74,11 @@ const Search = () => {
 
     setsearchValue(value);
     console.log(searchValue);
-    // TODO show errors
   };
 
   return (
-    <nav className="z-30">
-      <div className="flex flex-row justify-between items-center pb-[40px] pt-[10px] h-[115px]">
+    <nav className="z-30 font-inter">
+      <div className="flex flex-row justify-between items-center pt-4 h-full bg-gradient-top">
         <div>
           <Image
             src={"/darkLogo.svg"}
@@ -76,7 +89,7 @@ const Search = () => {
           />
         </div>
         <div className="flex flex-row gap-[20px] pr-8">
-          <div>
+          <div id="notifications" onClick={handleClick}>
             <Image
               src={"/bell.svg"}
               alt="notifications"
@@ -85,27 +98,25 @@ const Search = () => {
             />
           </div>
 
-          <div>
-            <Image
-              src={"/search.svg"}
-              alt="notifications"
-              width={28}
-              height={28}
-              onClick={handleClick}
-            />
+          <div onClick={handleClick} id="search">
+            <Image src={"/search.svg"} alt="search" width={28} height={28} />
           </div>
         </div>
       </div>
 
+      <div className={`${!notificationsMenu ? "hidden" : "flex"}`}>
+        <Notifications id="notifications" />
+      </div>
+
       <div
-        className={`bg-red-400 h-[auto] rounded-b-3xl w-full flex-col pr-8 pl-6 absolute gap-8 ${
+        className={`bg-gradient-to-b from-gradient-top to-gradient-bottom h-[auto] rounded-b-3xl w-full flex-col pr-8 pl-6 pt-10 absolute gap-8 ${
           !navMenuIsOpen ? "hidden" : "flex"
         }`}
       >
         <div className=" flex flex-col gap-10">
           <div className="flex flex-row pt-2 items-center gap-4">
             <Input
-              className="focus:outline-none border-solid border-bill border-[2px] appearance-none"
+              className="focus:outline-none border-solid border-bill border-[2px] appearance-none bg-searchbar-foreground"
               type="search"
               name="search"
               placeholder="Sök"
@@ -129,13 +140,13 @@ const Search = () => {
                   return (
                     <CategoryButton
                       id={data.id}
-                      className="items-center bg-white rounded-3xl"
+                      className="items-center bg-searchbar-foreground rounded-3xl"
                       key={data.id}
                       name={data.name}
                       source={data.icon}
                       value={data.name}
                       onClick={() => {
-                        console.log(data.name.toLocaleLowerCase());
+                        console.log(data.id);
                       }}
                     />
                   );
