@@ -99,7 +99,7 @@ const Search = () => {
       </div>
 
       <div
-        className={`bg-gradient-to-b from-gradient-top to-gradient-bottom h-[auto] rounded-b-3xl w-full flex-col pr-8 pl-6 pt-10 absolute gap-8 ${
+        className={`bg-gradient-to-b from-gradient-top to-gradient-bottom h-[auto] rounded-b-3xl w-full flex-col pr-8 pl-6 pt-10 fixed gap-8 ${
           !notificationsMenu ? "hidden" : "flex"
         }`}
       >
@@ -107,7 +107,7 @@ const Search = () => {
       </div>
 
       <div
-        className={`bg-gradient-to-b from-gradient-top to-gradient-bottom h-[auto] rounded-b-3xl w-full flex-col pr-8 pl-6 pt-10 absolute gap-8 ${
+        className={`bg-gradient-to-b from-gradient-top to-gradient-bottom h-[auto] rounded-b-3xl w-full flex-col pr-8 pl-6 pt-10 fixed gap-8 ${
           !navMenuIsOpen ? "hidden" : "flex"
         }`}
       >
