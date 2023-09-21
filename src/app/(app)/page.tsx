@@ -66,15 +66,6 @@ const Home = async () => {
       )
     : 0;
 
-  /* const { data } = await supabase.storage.from("services").download("1.jpg"); */
-
-  // const { data, error } = await supabase.storage.getBucket("services");
-
-  const { data } = supabase.storage.from("services").getPublicUrl("1.jpg");
-
-  console.log(data);
-  // console.log(error);
-
   return (
     <div className="flex flex-col gap-5">
       <p>
