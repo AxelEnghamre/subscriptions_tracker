@@ -158,22 +158,14 @@ const SignUp = () => {
 
       <div className="flex justify-center w-full pt-[18px]">
         {theme === "dark" && (
-          <Image
-            src="/lightLogo.svg"
-            alt="bill logo"
-            width={195}
-            height={118}
-            priority
-          />
+          <div className="relative w-[195px] h-[118px]">
+            <Image src="/lightLogo.svg" alt="bill logo" fill={true} priority />
+          </div>
         )}
         {theme === "light" && (
-          <Image
-            src={"/darkLogo.svg"}
-            alt="bill logo"
-            width={195}
-            height={118}
-            priority
-          />
+          <div className="relative w-[195px] h-[118px]">
+            <Image src={"/darkLogo.svg"} alt="bill logo" fill={true} priority />
+          </div>
         )}
       </div>
 

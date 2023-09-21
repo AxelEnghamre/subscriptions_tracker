@@ -103,22 +103,14 @@ const SignIn = () => {
       {/* TODO change logo based on theme*/}
       <div className="w-full flex flex-col items-center justify-center pt-[18px] gap-8 mb-7">
         {theme === "dark" && (
-          <Image
-            src="/lightLogo.svg"
-            alt="bill logo"
-            width={195}
-            height={118}
-            priority
-          />
+          <div className="relative w-[195px] h-[118px]">
+            <Image src="/lightLogo.svg" alt="bill logo" fill={true} priority />
+          </div>
         )}
         {theme === "light" && (
-          <Image
-            src={"/darkLogo.svg"}
-            alt="bill logo"
-            width={195}
-            height={118}
-            priority
-          />
+          <div className="relative w-[195px] h-[118px]">
+            <Image src={"/darkLogo.svg"} alt="bill logo" fill={true} priority />
+          </div>
         )}
 
         <h2 className="text-xl font-normal text-login-surface">Login</h2>

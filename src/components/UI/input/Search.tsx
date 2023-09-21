@@ -78,13 +78,9 @@ const Search = () => {
     <nav className="z-30 font-inter">
       <div className="flex flex-row justify-between items-center pt-4 h-full bg-gradient-top">
         <div>
-          <Image
-            src={"/darkLogo.svg"}
-            alt="Logo"
-            width={116}
-            height={65}
-            priority
-          />
+          <div className="relative w-[116px] h-[65px]">
+            <Image src={"/darkLogo.svg"} alt="Logo" fill={true} priority />
+          </div>
         </div>
         <div className="flex flex-row gap-[20px] pr-8">
           <div id="notifications" onClick={handleClick}>
