@@ -50,8 +50,6 @@ const Search = () => {
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const iconClicked = event.currentTarget.id;
 
-    console.log(iconClicked);
-
     if (iconClicked === "search") {
       if (navMenuIsOpen) {
         setNavMenuIsOpen(false);
@@ -104,8 +102,12 @@ const Search = () => {
         </div>
       </div>
 
-      <div className={`${!notificationsMenu ? "hidden" : "flex"}`}>
-        <Notifications id="notifications" />
+      <div
+        className={`bg-gradient-to-b from-gradient-top to-gradient-bottom h-[auto] rounded-b-3xl w-full flex-col pr-8 pl-6 pt-10 absolute gap-8 ${
+          !notificationsMenu ? "hidden" : "flex"
+        }`}
+      >
+        <Notifications id="notifications" className=""/>
       </div>
 
       <div
