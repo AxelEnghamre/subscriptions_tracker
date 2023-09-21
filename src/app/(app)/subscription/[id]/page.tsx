@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import type { Database } from "@/lib/supabase";
 import GoHomeButton from "@/components/UI/buttons/GoHomeButton";
 import PriceHistory from "@/components/UI/charts/PriceHistory";
+import { redirect } from "next/navigation";
 
 const Subscription = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
@@ -14,7 +15,7 @@ const Subscription = async ({ params }: { params: { id: string } }) => {
   const session = (await supabase.auth.getSession()).data.session;
 
   if (!session) {
-    return <p>No session</p>;
+    redirect("/sign-in");
   }
 
   const { data: subscription } = await supabase
@@ -44,6 +45,10 @@ const Subscription = async ({ params }: { params: { id: string } }) => {
     .eq("user_id", session.user.id)
     .eq("id", id)
     .single();
+
+  if (subscription === null) {
+    redirect("/");
+  }
 
   const pricePerMonth =
     subscription?.subscriptions?.subscriptions_prices.at(-1)?.price_per_month ??
