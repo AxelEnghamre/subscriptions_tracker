@@ -107,7 +107,7 @@ const Search = () => {
           !notificationsMenu ? "hidden" : "flex"
         }`}
       >
-        <Notifications id="notifications" className=""/>
+        <Notifications id="notifications" className="" />
       </div>
 
       <div
