@@ -1,6 +1,8 @@
 const Notifications = ({ className }: { className?: string }) => {
   return (
-    <div className={className}>
+    <div
+      className={`bg-gradient-to-b from-gradient-top to-gradient-bottom h-[auto] rounded-b-3xl w-full flex-col pr-8 pl-6 pt-10 fixed gap-8 flex ${className}`}
+    >
       <ul className="h-full text-logo flex flex-col gap-5">
         <li className="h-10 border-b-2 border-logo">Netflix</li>
         <li className="h-10 border-b-2 border-logo">Amazon Prime</li>
