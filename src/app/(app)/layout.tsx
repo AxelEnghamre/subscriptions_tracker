@@ -6,7 +6,8 @@ import type { Database } from "@/lib/supabase";
 import { redirect } from "next/navigation";
 import Menu from "@/components/menu";
 import { UserContextProvider, Profile } from "@/contexts/UserContext";
-import Search from "@/components/UI/input/Search";
+import NavMenu from "@/components/navMenu/NavMenu";
+import DropDownContainer from "@/components/UI/dropdowns/DropDownContainer";
 
 const AppLayout = async ({ children }: { children: React.ReactNode }) => {
   const supabase = createServerComponentClient<Database>({ cookies });
@@ -32,7 +33,8 @@ const AppLayout = async ({ children }: { children: React.ReactNode }) => {
 
   return (
     <UserContextProvider profile={profile as Profile}>
-      <Search />
+      <NavMenu />
+      <DropDownContainer />
       <main className="w-full h-full bg-off-white">{children}</main>
       <Menu />
     </UserContextProvider>
