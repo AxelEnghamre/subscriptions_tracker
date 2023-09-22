@@ -1,12 +1,6 @@
-const Notifications = ({
-  className,
-  id,
-}: {
-  className?: string;
-  id: string;
-}) => {
+const Notifications = ({ className }: { className?: string }) => {
   return (
-    <div className={className} id={id}>
+    <div className={className}>
       <ul className="h-full text-logo flex flex-col gap-5">
         <li className="h-10 border-b-2 border-logo">Netflix</li>
         <li className="h-10 border-b-2 border-logo">Amazon Prime</li>

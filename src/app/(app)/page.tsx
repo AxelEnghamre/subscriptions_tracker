@@ -4,6 +4,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import type { Database } from "@/lib/supabase";
 import SubscriptionLink from "@/components/UI/links/SubscriptionLink";
+import AddSubscriptionButton from "@/components/UI/buttons/AddSubscriptionButton";
 
 const months = [
   "January",
@@ -67,7 +68,7 @@ const Home = async () => {
     : 0;
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 font-inter">
       <p>
         Kostnad i {months[new Date().getMonth()]}: {totalPrice}kr
       </p>
@@ -87,6 +88,9 @@ const Home = async () => {
               />
             </li>
           ))}
+          <li>
+            <AddSubscriptionButton />
+          </li>
         </ul>
       ) : (
         <p>Du har inga abonemang</p>
