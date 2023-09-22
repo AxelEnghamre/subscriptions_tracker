@@ -4,8 +4,8 @@ import Search from "./Serach";
 const DropDownContainer = () => {
   return (
     <div>
-      <Notifications className="hidden" />
-      <Search className="hidden" />
+      <Notifications className="z-30 " />
+      <Search className="z-30 hidden" />
     </div>
   );
 };
