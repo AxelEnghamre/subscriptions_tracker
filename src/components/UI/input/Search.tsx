@@ -6,45 +6,11 @@ import { useRouter } from "next/navigation";
 import Input from "./Input";
 import CategoryButton from "../buttons/CategoryButton";
 import Notifications from "../dropdowns/Notifications";
+import CategoryButtons from "../buttons/CategoryButtons";
 
 const Search = () => {
   const [navMenuIsOpen, setNavMenuIsOpen] = useState(false);
   const [notificationsMenu, setNotificationsMenu] = useState(false);
-  const [categoryList, setCategoryList] = useState([
-    {
-      id: "musik",
-      name: "Musik",
-      icon: "/music.svg",
-    },
-    {
-      id: "nöje",
-      name: "Nöje",
-      icon: "/pleasure.svg",
-    },
-    {
-      id: "livsstil",
-      name: "Livsstil",
-      icon: "/lifestyle.svg",
-    },
-    ,
-    {
-      id: "böcker",
-      name: "Böcker",
-      icon: "/books.svg",
-    },
-    ,
-    {
-      id: "spel",
-      name: "Spel",
-      icon: "/games.svg",
-    },
-    ,
-    {
-      id: "träning",
-      name: "Träning",
-      icon: "/fitness.svg",
-    },
-  ]);
   const [searchValue, setsearchValue] = useState("");
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -132,25 +98,7 @@ const Search = () => {
           </div>
 
           <div>
-            <ul className="flex flex-row gap-4 flex-wrap">
-              {categoryList.map((data) => {
-                if (data != undefined) {
-                  return (
-                    <CategoryButton
-                      id={data.id}
-                      className="items-center bg-searchbar-foreground rounded-3xl"
-                      key={data.id}
-                      name={data.name}
-                      source={data.icon}
-                      value={data.name}
-                      onClick={() => {
-                        console.log(data.id);
-                      }}
-                    />
-                  );
-                }
-              })}
-            </ul>
+            <CategoryButtons />
           </div>
         </div>
 
