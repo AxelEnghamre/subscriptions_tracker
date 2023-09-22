@@ -1,33 +1,37 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/navigation";
 import Input from "../UI/input/Input";
 import CategoryButtons from "../UI/buttons/CategoryButtons";
 import Notifications from "../UI/dropdowns/Notifications";
+import { MenuContext } from "@/contexts/DropDownMenuContext";
 
 const NavMenu = () => {
   const [navMenu, setNavMenu] = useState(false);
   const [notificationsMenu, setNotificationsMenu] = useState(false);
   const [searchValue, setsearchValue] = useState("");
+  const { menu, changeMenuTo } = useContext(MenuContext) as MenuContext;
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const iconClicked = event.currentTarget.id;
 
     if (iconClicked === "search") {
-      if (navMenu) {
-        setNavMenu(false);
-      } else {
-        setNavMenu(true);
-        setNotificationsMenu(false);
+      if (menu === "search") {
+        changeMenuTo("none");
+      } else if (menu === "none") {
+        changeMenuTo("search");
+      } else if (menu === "notifications") {
+        changeMenuTo("search");
       }
     } else if (iconClicked === "notifications") {
-      if (notificationsMenu) {
-        setNotificationsMenu(false);
-      } else {
-        setNavMenu(false);
-        setNotificationsMenu(true);
+      if (menu === "notifications") {
+        changeMenuTo("none");
+      } else if (menu === "none") {
+        changeMenuTo("notifications");
+      } else if (menu === "search") {
+        changeMenuTo("notifications");
       }
     }
   };
