@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { ThemeContextProvider } from "@/contexts/ThemeContext";
+import { MenuContextProvider } from "@/contexts/DropDownMenuContext";
 
 const metadata: Metadata = {
   title: "Bill",
@@ -11,7 +12,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="sv">
       <body className="w-screen h-screen overflow-hidden">
-        <ThemeContextProvider>{children}</ThemeContextProvider>
+        <ThemeContextProvider>
+          <MenuContextProvider>{children}</MenuContextProvider>
+        </ThemeContextProvider>
+        {/* <MenuContextProvider>{children}</MenuContextProvider> */}
       </body>
     </html>
   );
