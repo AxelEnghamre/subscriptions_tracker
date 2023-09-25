@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { Bar, ChartProps } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
 const PriceHistory = ({
   subscriptionPrices,
@@ -19,14 +19,7 @@ const PriceHistory = ({
     createdAt: string;
   }[];
 }) => {
-  ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    // Tooltip,
-    // Legend,
-  );
+  ChartJS.register(CategoryScale, LinearScale, BarElement, Title);
   const data = {
     labels: subscriptionPrices.map((subscriptionPrice) =>
       new Date(subscriptionPrice.createdAt).toLocaleDateString("sv"),
@@ -43,34 +36,49 @@ const PriceHistory = ({
     ],
   };
 
+  const priceOnTop = {
+    id: "customLabels",
+    afterDraw: (chart: ChartJS) => {
+      const ctx = chart.ctx;
+      const meta = chart.getDatasetMeta(0);
+      const dataset = meta.data;
+
+      dataset.forEach((bar: any, index) => {
+        const value = bar.$context.raw as string;
+        const x = bar.x;
+        const y = bar.y;
+        ctx.fillText(value, x - 5, y - 5); // Adjust the position of the label
+      });
+    },
+  };
+
   return (
     <div className="w-full">
       <Bar
         data={data}
         options={{
-          plugins: {},
           scales: {
             x: {
               grid: {
                 display: false,
-                // tickColor: "transparent"
               },
               border: {
                 display: false,
               },
             },
             y: {
-              // display: false, // Hide the y-axis
-              border: {
-                display: false,
-              },
+              display: false, // Hide the y-axis
+              offset: true,
               beginAtZero: true,
-              grid: {
-                display: false,
+              ticks: {
+                font: {
+                  size: 16,
+                },
               },
             },
           },
         }}
+        plugins={[priceOnTop]}
       />
     </div>
   );
