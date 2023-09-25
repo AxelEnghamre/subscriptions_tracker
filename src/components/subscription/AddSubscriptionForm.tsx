@@ -1,6 +1,6 @@
 "use client";
 
-import Input from "@/components/UI/input/Input";
+import Input from "@/components/UI/Input";
 import { useState } from "react";
 
 const AddSubscriptionForm = () => {

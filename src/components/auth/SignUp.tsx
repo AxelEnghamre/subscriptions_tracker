@@ -5,7 +5,7 @@ import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/navigation";
 import { ThemeContext } from "@/contexts/ThemeContext";
 import ThemeButton from "../UI/buttons/ThemeButton";
-import Input from "@/components/UI/input/Input";
+import Input from "@/components/UI/Input";
 import Image from "next/image";
 import ShowPasswordButton from "../UI/buttons/ShowPasswordButton";
 import ConfirmButton from "../UI/buttons/ConfirmButton";
