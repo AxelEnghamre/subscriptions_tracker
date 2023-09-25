@@ -127,12 +127,20 @@ const SignIn = () => {
               <p className="text-login-surface font-inter">E-post</p>
               <div className="flex flex-row items-center rounded-3xl h-12 w-full bg-loginbar-foreground">
                 <div className="pl-4">
-                  <Image
-                    src={"mail.svg"}
-                    alt="email icon"
-                    width={16}
-                    height={13}
-                  />
+                  {theme === "dark" && (
+                    <div className="relative w-[16px] h-[13px]">
+                      <Image
+                        src={"mailDarkMode.svg"}
+                        alt="email icon"
+                        fill={true}
+                      />
+                    </div>
+                  )}
+                  {theme === "light" && (
+                    <div className="relative w-[16px] h-[13px]">
+                      <Image src={"mail.svg"} alt="email icon" fill={true} />
+                    </div>
+                  )}
                 </div>
 
                 <Input
@@ -157,12 +165,20 @@ const SignIn = () => {
               <p className="text-login-surface font-inter">Lösenord</p>
               <div className="flex flex-row items-center rounded-3xl h-12 w-full bg-loginbar-foreground">
                 <div className="pl-4">
-                  <Image
-                    src={"/lock.svg"}
-                    alt="lock icon"
-                    width={16}
-                    height={20}
-                  />
+                  {theme === "dark" && (
+                    <div className="relative w-[16px] h-[20px]">
+                      <Image
+                        src={"/lockDarkMode.svg"}
+                        alt="lock icon"
+                        fill={true}
+                      />
+                    </div>
+                  )}
+                  {theme === "light" && (
+                    <div className="relative w-[16px] h-[20px]">
+                      <Image src={"/lock.svg"} alt="lock icon" fill={true} />
+                    </div>
+                  )}
                 </div>
                 <Input
                   className="focus:outline-none bg-loginbar-foreground text-loginbar-surface placeholder-loginbar-surface font-inter"

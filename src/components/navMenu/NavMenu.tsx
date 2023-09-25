@@ -3,13 +3,12 @@
 import Image from "next/image";
 import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/navigation";
-import Input from "../UI/input/Input";
-import CategoryButtons from "../UI/buttons/CategoryButtons";
-import Notifications from "../UI/dropdowns/Notifications";
 import { MenuContext } from "@/contexts/DropDownMenuContext";
+import { ThemeContext } from "@/contexts/ThemeContext";
 
 const NavMenu = () => {
   const { menu, changeMenuTo } = useContext(MenuContext) as MenuContext;
+  const { theme, changeThemeTo } = useContext(ThemeContext) as ThemeContext;
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const iconClicked = event.currentTarget.id;
@@ -38,21 +37,57 @@ const NavMenu = () => {
       <div className="flex flex-row justify-between items-center pt-4 h-full bg-gradient-top">
         <div>
           <div className="relative w-[116px] h-[65px]">
-            <Image src={"/darkLogo.svg"} alt="Logo" fill={true} priority />
+            {theme === "dark" && (
+              <div className="relative w-[116px] h-[65px]">
+                <Image
+                  src="/lightLogo.svg"
+                  alt="bill logo"
+                  fill={true}
+                  priority
+                />
+              </div>
+            )}
+            {theme === "light" && (
+              <div className="relative w-[116px] h-[65px]">
+                <Image
+                  src={"/darkLogo.svg"}
+                  alt="bill logo"
+                  fill={true}
+                  priority
+                />
+              </div>
+            )}
           </div>
         </div>
         <div className="flex flex-row gap-[20px] pr-8">
           <div id="notifications" onClick={handleClick}>
-            <Image
-              src={"/bell.svg"}
-              alt="notifications"
-              width={30.03}
-              height={35}
-            />
+            {theme === "dark" && (
+              <div className="relative w-[30.03px] h-[35px]">
+                <Image
+                  src={"/bellDarkMode.svg"}
+                  alt="notifications"
+                  fill={true}
+                />
+              </div>
+            )}
+            {theme === "light" && (
+              <div className="relative w-[30.03px] h-[35px]">
+                <Image src={"/bell.svg"} alt="notifications" fill={true} />
+              </div>
+            )}
           </div>
 
           <div id="search" onClick={handleClick}>
-            <Image src={"/search.svg"} alt="search" width={28} height={28} />
+            {theme === "dark" && (
+              <div className="relative w-[28px] h-[28px]">
+                <Image src={"/searchDarkMode.svg"} alt="search" fill={true} />
+              </div>
+            )}
+            {theme === "light" && (
+              <div className="relative w-[28px] h-[28px]">
+                <Image src={"/search.svg"} alt="search" fill={true} />
+              </div>
+            )}
           </div>
         </div>
       </div>
