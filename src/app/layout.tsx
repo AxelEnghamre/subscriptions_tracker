@@ -11,11 +11,10 @@ const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="sv">
-      <body className="w-screen h-screen overflow-hidden">
+      <body className="w-screen h-full bg-off-white">
         <ThemeContextProvider>
           <MenuContextProvider>{children}</MenuContextProvider>
         </ThemeContextProvider>
-        {/* <MenuContextProvider>{children}</MenuContextProvider> */}
       </body>
     </html>
   );

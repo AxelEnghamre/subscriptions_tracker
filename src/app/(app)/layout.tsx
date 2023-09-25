@@ -35,7 +35,9 @@ const AppLayout = async ({ children }: { children: React.ReactNode }) => {
     <UserContextProvider profile={profile as Profile}>
       <NavMenu />
       <DropDownContainer />
-      <main className="w-full h-full bg-off-white">{children}</main>
+      <main className="w-full h-full bg-gradient-to-b from-gradient-top to-gradient-bottom">
+        {children}
+      </main>
       <Menu />
     </UserContextProvider>
   );
