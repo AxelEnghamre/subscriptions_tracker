@@ -9,9 +9,6 @@ import Notifications from "../UI/dropdowns/Notifications";
 import { MenuContext } from "@/contexts/DropDownMenuContext";
 
 const NavMenu = () => {
-  const [navMenu, setNavMenu] = useState(false);
-  const [notificationsMenu, setNotificationsMenu] = useState(false);
-  const [searchValue, setsearchValue] = useState("");
   const { menu, changeMenuTo } = useContext(MenuContext) as MenuContext;
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -34,13 +31,6 @@ const NavMenu = () => {
         changeMenuTo("notifications");
       }
     }
-  };
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-
-    setsearchValue(value);
-    console.log(searchValue);
   };
 
   return (
@@ -66,49 +56,6 @@ const NavMenu = () => {
           </div>
         </div>
       </div>
-
-      {/* <div
-        className={`bg-gradient-to-b from-gradient-top to-gradient-bottom h-[auto] rounded-b-3xl w-full flex-col pr-8 pl-6 pt-10 fixed gap-8 ${
-          !notificationsMenu ? "hidden" : "flex"
-        }`}
-      >
-        <Notifications />
-      </div> */}
-
-      {/* <div
-        className={`bg-gradient-to-b from-gradient-top to-gradient-bottom h-[auto] rounded-b-3xl w-full flex-col pr-8 pl-6 pt-10 fixed gap-8 ${
-          !navMenu ? "hidden" : "flex"
-        }`}
-      >
-        <div className=" flex flex-col gap-10">
-          <div className="flex flex-row pt-2 items-center gap-4">
-            <Input
-              className="focus:outline-none border-solid border-bill border-[2px] appearance-none bg-searchbar-foreground"
-              type="search"
-              name="search"
-              placeholder="Sök"
-              value={searchValue}
-              onChange={handleChange}
-              id="search"
-            />
-            <p
-              onClick={() => {
-                setsearchValue("");
-              }}
-            >
-              Avbryt
-            </p>
-          </div>
-
-          <div>
-            <CategoryButtons />
-          </div>
-        </div>
-
-        <div className="flex justify-center items-center pb-5">
-          <div className="bg-logo w-[43px] h-[4px] rounded"></div>
-        </div>
-      </div> */}
     </nav>
   );
 };
