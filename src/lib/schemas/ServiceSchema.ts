@@ -12,4 +12,12 @@ const serviceInputUpdateSchema = z
   })
   .merge(serviceInputSchema);
 
-export { serviceInputSchema, serviceInputUpdateSchema };
+const serviceInputDeleteSchema = z.object({
+  id: z.string(),
+});
+
+export {
+  serviceInputSchema,
+  serviceInputUpdateSchema,
+  serviceInputDeleteSchema,
+};
