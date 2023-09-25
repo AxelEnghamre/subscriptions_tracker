@@ -94,7 +94,7 @@ const Subscription = async ({ params }: { params: { id: string } }) => {
         </div>
 
         <div className="flex flex-row gap-6">
-          <EditSubscriptionButton />
+          <EditSubscriptionButton id={subscription.id} />
           <DeleteSubscriptionButton id={subscription.id} />
         </div>
 

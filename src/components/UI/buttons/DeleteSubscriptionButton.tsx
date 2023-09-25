@@ -4,7 +4,13 @@ import Image from "next/image";
 import { ThemeContext } from "@/contexts/ThemeContext";
 import { useContext } from "react";
 
-const DeleteSubscriptionButton = ({ id }: { id: number }) => {
+const DeleteSubscriptionButton = ({
+  id,
+  className,
+}: {
+  id: number;
+  className?: string;
+}) => {
   const { theme, changeThemeTo } = useContext(ThemeContext) as ThemeContext;
 
   const handleClick = () => {
@@ -12,7 +18,7 @@ const DeleteSubscriptionButton = ({ id }: { id: number }) => {
   };
   return (
     <div
-      className="w-24 h-24 p-4 rounded-2xl bg-button-foreground text-xs text-button-surface shadow-lg flex flex-col items-center justify-center gap-3 font-inter"
+      className={`w-24 h-24 p-4 rounded-2xl bg-button-foreground text-xs text-button-surface shadow-lg flex flex-col items-center justify-center gap-3 font-inter ${className}`}
       onClick={handleClick}
     >
       {theme === "dark" && (
