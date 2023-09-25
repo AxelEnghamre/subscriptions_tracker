@@ -4,14 +4,21 @@ import Image from "next/image";
 import { ThemeContext } from "@/contexts/ThemeContext";
 import { useContext } from "react";
 
-const DeleteSubscriptionButton = () => {
+const DeleteSubscriptionButton = ({ id }: { id: number }) => {
   const { theme, changeThemeTo } = useContext(ThemeContext) as ThemeContext;
+
+  const handleClick = () => {
+    console.log(id);
+  };
   return (
-    <div className="w-24 h-24 p-4 rounded-2xl bg-white text-xs shadow-lg flex flex-col items-center justify-center gap-3 font-inter">
+    <div
+      className="w-24 h-24 p-4 rounded-2xl bg-button-foreground text-xs text-button-surface shadow-lg flex flex-col items-center justify-center gap-3 font-inter"
+      onClick={handleClick}
+    >
       {theme === "dark" && (
         <div className="relative w-[24px] h-[28px]">
           <Image
-            src="/deleteLightMode.svg"
+            src="/deleteDarkMode.svg"
             alt="delete icon"
             fill={true}
             priority
@@ -21,7 +28,7 @@ const DeleteSubscriptionButton = () => {
       {theme === "light" && (
         <div className="relative w-[24px] h-[28px]">
           <Image
-            src={"/deleteDarkMode.svg"}
+            src={"/deleteLightMode.svg"}
             alt="delete icon"
             fill={true}
             priority

@@ -7,21 +7,16 @@ import Image from "next/image";
 const EditSubscriptionButton = () => {
   const { theme, changeThemeTo } = useContext(ThemeContext) as ThemeContext;
   return (
-    <div className="w-24 h-24 p-4 rounded-2xl bg-white text-xs shadow-lg flex flex-col items-center justify-center gap-3 font-inter">
+    <div className="w-24 h-24 p-4 rounded-2xl bg-button-foreground text-xs text-button-surface shadow-lg flex flex-col items-center justify-center gap-3 font-inter">
       {theme === "dark" && (
         <div className="relative w-[24px] h-[24px]">
-          <Image
-            src="/editLightMode.svg"
-            alt="edit icon"
-            fill={true}
-            priority
-          />
+          <Image src="/editDarkMode.svg" alt="edit icon" fill={true} priority />
         </div>
       )}
       {theme === "light" && (
         <div className="relative w-[24px] h-[24px]">
           <Image
-            src={"/editDarkMode.svg"}
+            src={"/editLightMode.svg"}
             alt="edit icon"
             fill={true}
             priority
