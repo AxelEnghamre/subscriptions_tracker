@@ -75,7 +75,7 @@ const Subscription = async ({ params }: { params: { id: string } }) => {
   return (
     <>
       <GoHomeButton />
-      <div className="w-full px-6 flex flex-col gap-5 items-center">
+      <div className="w-full px-6 flex flex-col gap-5 items-center pb-[150px]">
         <Image
           src={icon.publicUrl}
           alt={subscription.subscriptions?.services?.name as string}
@@ -93,16 +93,16 @@ const Subscription = async ({ params }: { params: { id: string } }) => {
           </div>
         </div>
 
-        <div className="flex flex-row gap-6">
-          <EditSubscriptionButton id={subscription.id} />
-          <DeleteSubscriptionButton id={subscription.id} />
-        </div>
-
         <div>
           <p>Prishistorik</p>
           {subscriptionPrices !== undefined && (
             <PriceHistory subscriptionPrices={subscriptionPrices} />
           )}
+        </div>
+
+        <div className="flex flex-row gap-6">
+          <EditSubscriptionButton id={subscription.id} />
+          <DeleteSubscriptionButton id={subscription.id} />
         </div>
       </div>
     </>
