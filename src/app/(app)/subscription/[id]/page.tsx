@@ -7,6 +7,8 @@ import GoHomeButton from "@/components/UI/buttons/GoHomeButton";
 import PriceHistory from "@/components/UI/charts/PriceHistory";
 import { redirect } from "next/navigation";
 import Image from "next/image";
+import EditSubscriptionButton from "@/components/UI/buttons/EditSubscriptionButton";
+import DeleteSubscriptionButton from "@/components/UI/buttons/DeleteSubscriptionButton";
 
 const Subscription = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
@@ -89,6 +91,11 @@ const Subscription = async ({ params }: { params: { id: string } }) => {
           <div className="bg-bill rounded-2xl text-white p-3.5 w-28 h-fit text-sm shadow-md grid place-items-center">
             {pricePerMonth * 12} kr/år
           </div>
+        </div>
+
+        <div className="flex flex-row gap-6">
+          <EditSubscriptionButton />
+          <DeleteSubscriptionButton id={subscription.id} />
         </div>
 
         <div>
