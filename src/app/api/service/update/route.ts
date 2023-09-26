@@ -2,7 +2,7 @@ const dynamic = "force-dynamic";
 
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import { serviceInputUpdateSchema } from "@/lib/schemas/ServiceSchema";
+import { serviceInputUpdateSchema } from "@/lib/schemas/ServiceSchemas";
 
 import type { Database } from "@/lib/supabase";
 
