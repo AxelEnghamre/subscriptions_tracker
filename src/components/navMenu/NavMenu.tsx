@@ -63,20 +63,12 @@ const NavMenu = () => {
           <div id="notifications" onClick={handleClick}>
             {theme === "dark" && (
               <div className="relative w-[30.03px] h-[35px]">
-                <Image
-                  src={"/bellDarkMode.svg"}
-                  alt="notifications"
-                  fill={true}
-                />
+                <Image src={"/bellDark.svg"} alt="notifications" fill={true} />
               </div>
             )}
             {theme === "light" && (
               <div className="relative w-[30.03px] h-[35px]">
-                <Image
-                  src={"/bellLightMode.svg"}
-                  alt="notifications"
-                  fill={true}
-                />
+                <Image src={"/bellLight.svg"} alt="notifications" fill={true} />
               </div>
             )}
           </div>
@@ -84,12 +76,12 @@ const NavMenu = () => {
           <div id="search" onClick={handleClick}>
             {theme === "dark" && (
               <div className="relative w-[28px] h-[28px]">
-                <Image src={"/searchDarkMode.svg"} alt="search" fill={true} />
+                <Image src={"/searchDark.svg"} alt="search" fill={true} />
               </div>
             )}
             {theme === "light" && (
               <div className="relative w-[28px] h-[28px]">
-                <Image src={"/search.svg"} alt="search" fill={true} />
+                <Image src={"/searchLight.svg"} alt="search" fill={true} />
               </div>
             )}
           </div>

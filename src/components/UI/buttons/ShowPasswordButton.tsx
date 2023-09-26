@@ -13,7 +13,7 @@ const ShowPasswordButton = ({
       {theme === "dark" && (
         <div className="relative w-[22px] h-[15px]">
           <Image
-            src={"/eyeDarkMode.svg"}
+            src={"/eyeDark.svg"}
             fill={true}
             alt="show password button"
             onClick={onClick}
@@ -23,7 +23,7 @@ const ShowPasswordButton = ({
       {theme === "light" && (
         <div className="relative w-[22px] h-[15px]">
           <Image
-            src={"/eye.svg"}
+            src={"/eyeLight.svg"}
             fill={true}
             alt="show password button"
             onClick={onClick}

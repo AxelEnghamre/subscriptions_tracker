@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { signInSchema } from "@/lib/schemas/AuthSchemas";
 import { useContext } from "react";
@@ -27,6 +27,14 @@ const SignIn = () => {
   const [isSigningIn, setIsSigningIn] = useState(false);
   const { theme, changeThemeTo } = useContext(ThemeContext) as ThemeContext;
   const [signInFail, setSignInFail] = useState(false);
+
+  useEffect(() => {
+    const wait = async (ms: number) => {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    };
+
+    wait(5000);
+  }, []);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -130,7 +138,7 @@ const SignIn = () => {
                   {theme === "dark" && (
                     <div className="relative w-[16px] h-[13px]">
                       <Image
-                        src={"mailDarkMode.svg"}
+                        src={"mailDark.svg"}
                         alt="email icon"
                         fill={true}
                       />
@@ -138,7 +146,11 @@ const SignIn = () => {
                   )}
                   {theme === "light" && (
                     <div className="relative w-[16px] h-[13px]">
-                      <Image src={"mail.svg"} alt="email icon" fill={true} />
+                      <Image
+                        src={"mailLight.svg"}
+                        alt="email icon"
+                        fill={true}
+                      />
                     </div>
                   )}
                 </div>
@@ -168,7 +180,7 @@ const SignIn = () => {
                   {theme === "dark" && (
                     <div className="relative w-[16px] h-[20px]">
                       <Image
-                        src={"/lockDarkMode.svg"}
+                        src={"/lockDark.svg"}
                         alt="lock icon"
                         fill={true}
                       />
@@ -176,7 +188,11 @@ const SignIn = () => {
                   )}
                   {theme === "light" && (
                     <div className="relative w-[16px] h-[20px]">
-                      <Image src={"/lock.svg"} alt="lock icon" fill={true} />
+                      <Image
+                        src={"/lockLight.svg"}
+                        alt="lock icon"
+                        fill={true}
+                      />
                     </div>
                   )}
                 </div>

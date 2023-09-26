@@ -23,17 +23,12 @@ const EditSubscriptionButton = ({
     >
       {theme === "dark" && (
         <div className="relative w-[24px] h-[24px]">
-          <Image src="/editDarkMode.svg" alt="edit icon" fill={true} priority />
+          <Image src="/editDark.svg" alt="edit icon" fill={true} priority />
         </div>
       )}
       {theme === "light" && (
         <div className="relative w-[24px] h-[24px]">
-          <Image
-            src={"/editLightMode.svg"}
-            alt="edit icon"
-            fill={true}
-            priority
-          />
+          <Image src={"/editLight.svg"} alt="edit icon" fill={true} priority />
         </div>
       )}
       <p>Ändra</p>
