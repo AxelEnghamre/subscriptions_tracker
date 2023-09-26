@@ -26,6 +26,12 @@ const Home = async () => {
 
   const session = (await supabase.auth.getSession()).data.session;
 
+  const wait = async (ms: number) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  };
+
+  await wait(5000);
+
   if (!session) {
     return <p>No session</p>;
   }
