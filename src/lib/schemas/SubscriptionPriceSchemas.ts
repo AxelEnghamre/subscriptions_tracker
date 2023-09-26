@@ -3,7 +3,7 @@ import { z } from "zod";
 const subscriptionPriceInputSchema = z.object({
   subscriptionID: z.number(),
   pricePerMonth: z.number(),
-  createdAt: z.date(),
+  createdAt: z.string(),
 });
 
 const subscriptionPriceInputDeleteSchema = z.object({
