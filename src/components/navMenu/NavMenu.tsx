@@ -72,7 +72,11 @@ const NavMenu = () => {
             )}
             {theme === "light" && (
               <div className="relative w-[30.03px] h-[35px]">
-                <Image src={"/bell.svg"} alt="notifications" fill={true} />
+                <Image
+                  src={"/bellLightMode.svg"}
+                  alt="notifications"
+                  fill={true}
+                />
               </div>
             )}
           </div>
