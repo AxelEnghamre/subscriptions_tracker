@@ -6,7 +6,7 @@ const RootLoading = () => {
   return (
     <AnimatePresence mode="wait" initial={false}>
       <motion.div
-        className="w-screen h-screen bg-bill text-white"
+        className="w-screen h-screen bg-gradient-to-b from-loading-gradient-top to-loading-gradient-bottom text-white flex flex-col justify-center items-center"
         initial={{ x: 300, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         exit={{ x: 300, opacity: 0 }}
