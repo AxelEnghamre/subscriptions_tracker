@@ -13,8 +13,19 @@ const DeleteSubscriptionButton = ({
 }) => {
   const { theme, changeThemeTo } = useContext(ThemeContext) as ThemeContext;
 
-  const handleClick = () => {
-    console.log(id);
+  const handleClick = async () => {
+    const data = { id: id };
+    /* try {
+      const res = await fetch("/api/auth/delete-subscription", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+
+      console.log(res);
+    } catch (error) {
+      // TODO show errors
+      console.log(error);
+    } */
   };
   return (
     <div
@@ -23,18 +34,13 @@ const DeleteSubscriptionButton = ({
     >
       {theme === "dark" && (
         <div className="relative w-[24px] h-[28px]">
-          <Image
-            src="/deleteDarkMode.svg"
-            alt="delete icon"
-            fill={true}
-            priority
-          />
+          <Image src="/deleteDark.svg" alt="delete icon" fill={true} priority />
         </div>
       )}
       {theme === "light" && (
         <div className="relative w-[24px] h-[28px]">
           <Image
-            src={"/deleteLightMode.svg"}
+            src={"/deleteLight.svg"}
             alt="delete icon"
             fill={true}
             priority
