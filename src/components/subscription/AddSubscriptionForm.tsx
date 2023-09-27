@@ -29,8 +29,8 @@ const AddSubscriptionForm = () => {
   };
   return (
     <form className="text-login-surface h-screen px-4">
-      <div>
-        <label htmlFor="name">Namn på Service</label>
+      <label htmlFor="name">
+        <p>Namn på Service</p>
         <Input
           className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
           id="name"
@@ -40,14 +40,20 @@ const AddSubscriptionForm = () => {
           value={subscriptionFormValue.name}
           onChange={handleChange}
         />
-      </div>
-      <div>
-        <label htmlFor="icon">Välj iconbild</label>
-        <input type="file" id="icon" name="icon" />
-      </div>
-      <div>
-        <label htmlFor="category">Kategori</label>
-        <select name="category" id="category" className="text-button-surface">
+      </label>
+
+      <label htmlFor="icon">
+        <p>Välj iconbild</p>
+        <input type="file" id="icon" name="icon" className="bg-red-400" />
+      </label>
+
+      <label htmlFor="category">
+        <p>Kategori</p>
+        <select
+          name="category"
+          id="category"
+          className="focus:outline-none bg-loginbar-foreground text-login-surface font-inter rounded-2xl py-2 px-4"
+        >
           <option value="">Välj kategori</option>
           {categoryIcons.map((category) => (
             <option value={category.id} key={category.id}>
@@ -55,9 +61,10 @@ const AddSubscriptionForm = () => {
             </option>
           ))}
         </select>
-      </div>
-      <div>
-        <label htmlFor="costPerMonth">Kostnad per månad</label>
+      </label>
+
+      <label htmlFor="costPerMonth">
+        <p>Kostnad per månad</p>
         <Input
           className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
           id="costPerMonth"
@@ -67,9 +74,10 @@ const AddSubscriptionForm = () => {
           value={subscriptionFormValue.costPerMonth}
           onChange={handleChange}
         />
-      </div>
-      <div>
-        <label htmlFor="subscriptionPlan">prenumerationsplan</label>
+      </label>
+
+      <label htmlFor="subscriptionPlan">
+        <p>prenumerationsplan</p>
         <Input
           className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
           id="subscriptionPlan"
@@ -79,9 +87,10 @@ const AddSubscriptionForm = () => {
           value={subscriptionFormValue.subscriptionPlan}
           onChange={handleChange}
         />
-      </div>
-      <div>
-        <label htmlFor="discountPrice">Rabbat pris</label>
+      </label>
+
+      <label htmlFor="discountPrice">
+        <p>Rabbat pris</p>
         <Input
           className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
           id="discountPrice"
@@ -91,10 +100,10 @@ const AddSubscriptionForm = () => {
           value={subscriptionFormValue.discountPrice}
           onChange={handleChange}
         />
-      </div>
+      </label>
 
       <div className="flex justify-center ">
-        <div className="bg-button-foreground text-button-surface px-4 flex flex-row items-center justify-center rounded-2xl py-2 gap-2">
+        <div className="bg-button-foreground text-button-surface py-2 px-4 flex flex-row items-center justify-center rounded-2xl gap-2">
           <ConfirmButton
             className=""
             value="Lägg till"
