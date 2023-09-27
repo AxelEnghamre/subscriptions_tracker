@@ -19,6 +19,9 @@ const RootLoading = () => {
         <div className="h-full w-[162px]">
           <img src="/BILL.gif" alt="" />
         </div>
+        <div className="h-full w-[40px]">
+          <img src="/Bill_dots.gif" alt="" />
+        </div>
       </motion.div>
     </AnimatePresence>
   );
