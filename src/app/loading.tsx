@@ -16,7 +16,9 @@ const RootLoading = () => {
           damping: 20,
         }}
       >
-        loading
+        <div className="h-full w-[162px]">
+          <img src="/BILL.gif" alt="" />
+        </div>
       </motion.div>
     </AnimatePresence>
   );
