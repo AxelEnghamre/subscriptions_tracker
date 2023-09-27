@@ -50,7 +50,7 @@ const AddSubscriptionForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="text-login-surface h-screen px-4 flex flex-col gap-4 mb-[300px]"
+      className="text-login-surface h-screen px-4 flex flex-col gap-4"
     >
       <label htmlFor="name">
         <p>Namn på Service</p>
