@@ -123,7 +123,7 @@ const AddSubscriptionForm = () => {
       </label>
 
       <label htmlFor="subscriptionPlan">
-        <p>prenumerationsplan</p>
+        <p>Prenumerationsplan</p>
         <Input
           className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
           id="subscriptionPlan"

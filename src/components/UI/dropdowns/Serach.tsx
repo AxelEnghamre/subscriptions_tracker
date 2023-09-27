@@ -3,6 +3,7 @@
 import Input from "../Input";
 import { useEffect, useState } from "react";
 import CategoryButtons from "../buttons/CategoryButtons";
+import AddSubscriptionButton from "../buttons/AddSubscriptionButton";
 
 const Search = ({ className }: { className?: string }) => {
   const [searchValue, setsearchValue] = useState("");
@@ -38,7 +39,9 @@ const Search = ({ className }: { className?: string }) => {
         </div>
 
         <div>
-          <CategoryButtons />
+          {searchValue === "" && <CategoryButtons />}
+
+          {searchValue !== "" && <AddSubscriptionButton />}
         </div>
       </div>
 
