@@ -4,7 +4,7 @@ import AddSubscriptionForm from "@/components/subscription/AddSubscriptionForm";
 const AddSubscription = () => {
   return (
     <>
-      <div className="pb-[130px]">
+      <div className="pb-2">
         <GoHomeButton />
         <AddSubscriptionForm />
       </div>
