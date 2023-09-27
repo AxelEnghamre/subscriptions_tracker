@@ -2,40 +2,47 @@
 
 import Input from "@/components/UI/Input";
 import { useState } from "react";
-import { categoryIcons } from "@/lib/icons/Icons";
+import { categoryIcons, icons } from "@/lib/icons/Icons";
 import ConfirmButton from "../UI/buttons/ConfirmButton";
+import Image from "next/image";
 import { type } from "os";
 
 const AddSubscriptionForm = () => {
-  const [serviceName, setServiceName] = useState("");
-  const [serviceIcon, setServiceIcon] = useState("");
-  const [serviceCategory, setServiceCategory] = useState("");
-  const [serviceCostPerMonth, setServiceCostPerMonth] = useState("");
-  const [subscriptionPlan, setSubscriptionPlan] = useState("");
+  const [subscriptionFormValue, setSubscriptionFormValue] = useState({
+    name: "",
+    icon: "",
+    category: "",
+    costPerMonth: "",
+    subscriptionPlan: "",
+    discountPrice: "",
+  });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setSubscriptionFormValue((subscriptionFormValueSate) => ({
+      ...subscriptionFormValueSate,
+      [name]: value,
+    }));
+
+    console.log(subscriptionFormValue);
+  };
   return (
     <form className="text-login-surface h-screen px-4">
-      {/* <Input 
-                name="name"
-                id="name"
-                type="text"
-                placeholder="Namn"
-                value=""
-                onChange={()=>{}}
-            /> */}
-      {/* name */}
       <div>
-        <label htmlFor="">Namn på Service</label>
+        <label htmlFor="name">Namn på Service</label>
         <Input
-          id=""
-          placeholder=""
-          name=""
-          type=""
-          value=""
-          onChange={() => {}}
+          className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
+          id="name"
+          placeholder="Netflix"
+          name="name"
+          type="name"
+          value={subscriptionFormValue.name}
+          onChange={handleChange}
         />
       </div>
       <div>
-        <label htmlFor="file">Välj iconbild</label>
+        <label htmlFor="icon">Välj iconbild</label>
         <input type="file" id="icon" name="icon" />
       </div>
       <div>
@@ -50,40 +57,55 @@ const AddSubscriptionForm = () => {
         </select>
       </div>
       <div>
-        <label htmlFor="">Kostnad per månad</label>
+        <label htmlFor="costPerMonth">Kostnad per månad</label>
         <Input
-          id=""
-          placeholder=""
-          name=""
-          type=""
-          value=""
-          onChange={() => {}}
+          className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
+          id="costPerMonth"
+          placeholder="99"
+          name="costPerMonth"
+          type="number"
+          value={subscriptionFormValue.costPerMonth}
+          onChange={handleChange}
         />
       </div>
       <div>
-        <label htmlFor="">Kostnad per månad</label>
+        <label htmlFor="subscriptionPlan">prenumerationsplan</label>
         <Input
-          id=""
-          placeholder=""
-          name=""
-          type=""
-          value=""
-          onChange={() => {}}
+          className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
+          id="subscriptionPlan"
+          placeholder="Familj"
+          name="subscriptionPlan"
+          type="text"
+          value={subscriptionFormValue.subscriptionPlan}
+          onChange={handleChange}
         />
       </div>
       <div>
-        <label htmlFor="">prenumerationsplan</label>
+        <label htmlFor="discountPrice">Rabbat pris</label>
         <Input
-          id=""
-          placeholder=""
-          name=""
-          type=""
-          value=""
-          onChange={() => {}}
+          className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
+          id="discountPrice"
+          placeholder="59"
+          name="discountPrice"
+          type="number"
+          value={subscriptionFormValue.discountPrice}
+          onChange={handleChange}
         />
       </div>
 
-      <ConfirmButton value="" onClick={() => {}} type="submit" />
+      <div className="flex justify-center ">
+        <div className="bg-button-foreground text-button-surface px-4 flex flex-row items-center justify-center rounded-2xl py-2 gap-2">
+          <ConfirmButton
+            className=""
+            value="Lägg till"
+            onClick={() => {}}
+            type="submit"
+          />
+          <div className="relative h-[14px] w-[14px] m-1">
+            <Image src={"/add.svg"} alt="" fill={true} />
+          </div>
+        </div>
+      </div>
     </form>
   );
 };
