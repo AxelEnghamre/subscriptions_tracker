@@ -6,10 +6,11 @@ import {
   LinearScale,
   BarElement,
   Title,
-  Tooltip,
-  Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+
+import { ThemeContext } from "@/contexts/ThemeContext";
+import { useContext } from "react";
 
 const PriceHistory = ({
   subscriptionPrices,
@@ -19,6 +20,8 @@ const PriceHistory = ({
     createdAt: string;
   }[];
 }) => {
+  const { theme } = useContext(ThemeContext) as ThemeContext;
+
   ChartJS.register(CategoryScale, LinearScale, BarElement, Title);
   const data = {
     labels: subscriptionPrices.map((subscriptionPrice) =>
@@ -26,7 +29,7 @@ const PriceHistory = ({
     ),
     datasets: [
       {
-        label: "Dataset 1",
+        label: theme,
         data: subscriptionPrices.map(
           (subscriptionPrice) => subscriptionPrice.pricePerMonth,
         ),
@@ -47,6 +50,7 @@ const PriceHistory = ({
         const value = bar.$context.raw as string;
         const x = bar.x;
         const y = bar.y;
+        ctx.fillStyle = theme === "light" ? "#111344" : "#f6f6f6";
         ctx.fillText(value, x - 5, y - 5); // Adjust the position of the label
       });
     },
@@ -65,6 +69,9 @@ const PriceHistory = ({
               border: {
                 display: false,
               },
+              ticks: {
+                color: "var(--logo)",
+              },
             },
             y: {
               display: false, // Hide the y-axis
@@ -74,6 +81,7 @@ const PriceHistory = ({
                 font: {
                   size: 16,
                 },
+                color: "var(--logo)",
               },
             },
           },
