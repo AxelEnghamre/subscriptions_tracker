@@ -30,7 +30,7 @@ const Home = async () => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   };
 
-  await wait(5000);
+  // await wait(5000);
 
   if (!session) {
     return <p>No session</p>;
@@ -74,8 +74,8 @@ const Home = async () => {
     : 0;
 
   return (
-    <div className="flex flex-col gap-5 font-inter">
-      <p>
+    <div className="flex flex-col gap-5 font-inter h-screen">
+      <p className="text-logo">
         Kostnad i {months[new Date().getMonth()]}: {totalPrice}kr
       </p>
 
