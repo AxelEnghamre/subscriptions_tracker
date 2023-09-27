@@ -132,4 +132,4 @@ const icons: Icons = {
 };
 
 icons.notificationsDark.src;
-export default { icons, categoryIcons };
+export { icons, categoryIcons };
