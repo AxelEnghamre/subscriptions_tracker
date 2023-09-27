@@ -30,7 +30,7 @@ const Home = async () => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   };
 
-  // await wait(5000);
+  await wait(4500);
 
   if (!session) {
     return <p>No session</p>;
@@ -74,13 +74,13 @@ const Home = async () => {
     : 0;
 
   return (
-    <div className="flex flex-col gap-5 font-inter h-screen">
-      <p className="text-logo">
+    <div className="flex flex-col gap-10 font-inter h-screen">
+      <p className="text-logo text-center pt-4">
         Kostnad i {months[new Date().getMonth()]}: {totalPrice}kr
       </p>
 
       {userSubscriptions ? (
-        <ul>
+        <ul className="px-6 flex flex-row justify-center flex-wrap gap-4">
           {userSubscriptions.map((subscription) => (
             <li key={subscription.id}>
               <SubscriptionLink

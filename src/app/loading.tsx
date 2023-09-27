@@ -16,10 +16,10 @@ const RootLoading = () => {
           damping: 20,
         }}
       >
-        <div className="h-full w-[162px]">
+        <div className="w-[162px]">
           <img src="/BILL.gif" alt="" />
         </div>
-        <div className="h-full w-[40px]">
+        <div className="w-[40px]">
           <img src="/Bill_dots.gif" alt="" />
         </div>
       </motion.div>
