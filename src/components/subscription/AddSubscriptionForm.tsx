@@ -24,6 +24,22 @@ const AddSubscriptionForm = (services) => {
 
     if (validatedValues.success) {
       console.log(validatedValues);
+
+      try {
+        const res = await fetch("/api/subscription/create", {
+          method: "POST",
+          body: JSON.stringify(validatedValues.data),
+        });
+
+        console.log(res);
+        if (res.ok) {
+          console.log(res);
+        } else {
+        }
+      } catch (error) {
+        // TODO show errors
+        console.log(error);
+      }
     } else {
       console.log(validatedValues.error);
     }
