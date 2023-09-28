@@ -80,7 +80,6 @@ const AddDisscountForm = (subscriptions, services) => {
     >
       <h3 className="text-lg font-semibold">Lägg till Prenumerations pris</h3>
       <label htmlFor="subscriptionID">
-        <p>Prenumerations pris</p>
         <select
           name="subscriptionID"
           id="subscriptionID"
@@ -97,6 +96,7 @@ const AddDisscountForm = (subscriptions, services) => {
       </label>
 
       <label htmlFor="pricePerMonth">
+        <p>Prenumerations pris</p>
         <Input
           className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
           id="pricePerMonth"

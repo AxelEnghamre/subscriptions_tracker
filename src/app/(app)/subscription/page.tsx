@@ -1,6 +1,7 @@
 import GoHomeButton from "@/components/UI/buttons/GoHomeButton";
 import AddServiceForm from "@/components/subscription/AddServiceForm";
 import AddSubscriptionForm from "@/components/subscription/AddSubscriptionForm";
+import AddSubscriptionPrice from "@/components/subscription/AddSubscriptionPrice";
 import AddDisscountForm from "@/components/subscription/AddDiscountForm";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
@@ -44,6 +45,10 @@ const AddSubscription = async () => {
         <GoHomeButton />
         <AddServiceForm />
         <AddSubscriptionForm services={services} />
+        <AddSubscriptionPrice
+          subscriptions={subscriptions}
+          services={services}
+        />
         <AddDisscountForm subscriptions={subscriptions} services={services} />
       </div>
     </>
