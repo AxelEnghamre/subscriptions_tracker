@@ -7,7 +7,7 @@ import ConfirmButton from "../UI/buttons/ConfirmButton";
 import Image from "next/image";
 import { subscriptionPriceInputSchema } from "@/lib/schemas/SubscriptionPriceSchemas";
 
-const AddSubscriptionPrice = (subscriptions, services) => {
+const AddSubscriptionPrice = (subscriptions:any, services:any) => {
   const [subscriptionPriceFormValue, setSubscriptionPriceFormValue] = useState({
     subscriptionID: "",
     pricePerMonth: "",
@@ -88,7 +88,7 @@ const AddSubscriptionPrice = (subscriptions, services) => {
           onChange={handleChange}
         >
           <option value="">Välj Prenumeration</option>
-          {subscriptions.subscriptions.map((subscription) => (
+          {subscriptions.subscriptions.map((subscription:any) => (
             <option key={subscription.id} value={subscription.id}>
               {subscription.plan}
             </option>

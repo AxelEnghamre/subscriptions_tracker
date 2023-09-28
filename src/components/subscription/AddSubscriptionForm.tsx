@@ -8,7 +8,7 @@ import { type } from "os";
 import { subscriptionInputSchema } from "@/lib/schemas/SubscriptionSchemas";
 
 // TODO add type
-const AddSubscriptionForm = (services) => {
+const AddSubscriptionForm = (services:any) => {
   const [subscriptionFormValue, setSubscriptionFormValue] = useState({
     serviceID: "",
     plan: "",
@@ -79,7 +79,7 @@ const AddSubscriptionForm = (services) => {
           onChange={handleChange}
         >
           <option value="">Välj Service</option>
-          {services.services.map((service) => (
+          {services.services.map((service:any) => (
             <option key={service.id} value={service.id}>
               {service.name}
             </option>
