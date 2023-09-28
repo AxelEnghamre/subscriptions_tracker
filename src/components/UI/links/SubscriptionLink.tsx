@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const SubscriptionLink = ({
   name,
-  iconUrl = "/unknown.svg",
+  iconUrl = "/billProfile.svg",
   pricePerMonth,
   id,
 }: {
