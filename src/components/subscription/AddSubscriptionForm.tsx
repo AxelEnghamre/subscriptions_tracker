@@ -2,21 +2,15 @@
 
 import Input from "@/components/UI/Input";
 import { useState } from "react";
-import { categoryIcons, icons } from "@/lib/icons/Icons";
 import ConfirmButton from "../UI/buttons/ConfirmButton";
 import Image from "next/image";
 import { type } from "os";
-import { serviceInputSchema } from "@/lib/schemas/ServiceSchemas";
+import { subscriptionInputSchema } from "@/lib/schemas/SubscriptionSchemas";
 
-const AddSubscriptionForm = () => {
+const AddSubscriptionForm = (services) => {
   const [subscriptionFormValue, setSubscriptionFormValue] = useState({
-    name: "",
-    icon: "",
-    category: "",
-    costPerMonth: "",
-    subscriptionPlan: "",
-    discountPrice: "",
-    websiteUrl: "",
+    serviceID: "",
+    plan: "",
   });
   const [isSigningIn, setIsSigningIn] = useState(false);
 
@@ -24,7 +18,9 @@ const AddSubscriptionForm = () => {
     event.preventDefault();
     setIsSigningIn(true);
 
-    const validatedValues = serviceInputSchema.safeParse(subscriptionFormValue);
+    const validatedValues = subscriptionInputSchema.safeParse(
+      subscriptionFormValue,
+    );
 
     if (validatedValues.success) {
       console.log(validatedValues);
@@ -41,7 +37,12 @@ const AddSubscriptionForm = () => {
       | React.ChangeEvent<HTMLSelectElement>,
   ) => {
     const name = event.target.name;
-    const value = event.target.value;
+    let value: string | number = event.target.value;
+
+    if (name === "serviceID") {
+      value = parseInt(value);
+    }
+
     setSubscriptionFormValue((subscriptionFormValueSate) => ({
       ...subscriptionFormValueSate,
       [name]: value,
@@ -52,98 +53,31 @@ const AddSubscriptionForm = () => {
       onSubmit={handleSubmit}
       className="text-login-surface h-screen px-4 flex flex-col gap-4"
     >
-      <label htmlFor="name">
-        <p>Namn på Service</p>
-        <Input
-          className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
-          id="name"
-          placeholder="Netflix"
-          name="name"
-          type="name"
-          value={subscriptionFormValue.name}
-          onChange={handleChange}
-        />
-      </label>
-
-      <label htmlFor="icon">
-        <p>Service icon</p>
-        <div className="bg-loginbar-foreground text-login-surface w-[90px] rounded-2xl py-2 px-4 text-center">
-          <p>Välj bild</p>
-          <input
-            type="file"
-            id="icon"
-            name="icon"
-            className="hidden"
-            onChange={handleChange}
-          />
-        </div>
-      </label>
-
-      <label htmlFor="websiteUrl">
-        <p>Länk till hemsidan</p>
-        <Input
-          className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
-          id="websiteUrl"
-          placeholder="netflix.com"
-          name="websiteUrl"
-          type="url"
-          value={subscriptionFormValue.websiteUrl}
-          onChange={handleChange}
-        />
-      </label>
-
-      <label htmlFor="category">
-        <p>Kategori</p>
+      <label htmlFor="serviceID">
         <select
-          name="category"
-          id="category"
+          name="serviceID"
+          id="serviceID"
           className="focus:outline-none bg-loginbar-foreground text-login-surface font-inter rounded-2xl py-2 px-4"
           onChange={handleChange}
         >
-          <option value="">Välj kategori</option>
-          {categoryIcons.map((category) => (
-            <option value={category.id} key={category.id}>
-              {category.name}
+          <option value="">Välj Service</option>
+          {services.services.map((service) => (
+            <option key={service.id} value={service.id}>
+              {service.name}
             </option>
           ))}
         </select>
       </label>
 
-      <label htmlFor="costPerMonth">
-        <p>Kostnad per månad</p>
+      <label htmlFor="plan">
+        <p>Plan</p>
         <Input
           className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
-          id="costPerMonth"
-          placeholder="99"
-          name="costPerMonth"
-          type="number"
-          value={subscriptionFormValue.costPerMonth}
-          onChange={handleChange}
-        />
-      </label>
-
-      <label htmlFor="subscriptionPlan">
-        <p>Prenumerationsplan</p>
-        <Input
-          className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
-          id="subscriptionPlan"
-          placeholder="Familj"
-          name="subscriptionPlan"
+          id="plan"
+          placeholder="familj"
+          name="plan"
           type="text"
-          value={subscriptionFormValue.subscriptionPlan}
-          onChange={handleChange}
-        />
-      </label>
-
-      <label htmlFor="discountPrice">
-        <p>Rabbat pris</p>
-        <Input
-          className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
-          id="discountPrice"
-          placeholder="59"
-          name="discountPrice"
-          type="number"
-          value={subscriptionFormValue.discountPrice}
+          value={subscriptionFormValue.plan}
           onChange={handleChange}
         />
       </label>
