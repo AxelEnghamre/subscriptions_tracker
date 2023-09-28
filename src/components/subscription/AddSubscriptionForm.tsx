@@ -7,6 +7,7 @@ import Image from "next/image";
 import { type } from "os";
 import { subscriptionInputSchema } from "@/lib/schemas/SubscriptionSchemas";
 
+// TODO add type
 const AddSubscriptionForm = (services) => {
   const [subscriptionFormValue, setSubscriptionFormValue] = useState({
     serviceID: "",
@@ -97,6 +98,19 @@ const AddSubscriptionForm = (services) => {
           onChange={handleChange}
         />
       </label>
+
+      {/* <label htmlFor="price">
+        <p>Pris per månad</p>
+        <Input
+          className="focus:outline-none bg-loginbar-foreground text-loginbar-surface font-inter"
+          id=""
+          placeholder="99"
+          name=""
+          type="number"
+          value={subscriptionFormValue.plan}
+          onChange={handleChange}
+        />
+      </label> */}
 
       <div className="flex justify-center ">
         <div className="bg-button-foreground text-button-surface py-2 px-4 flex flex-row items-center justify-center rounded-2xl gap-2">
