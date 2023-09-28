@@ -36,7 +36,8 @@ const Subscription = async ({ params }: { params: { id: string } }) => {
           id,
           name,
           website_url,
-          icon_url
+          icon_url,
+          category
           ),
         subscriptions_prices(
           id,
@@ -82,8 +83,12 @@ const Subscription = async ({ params }: { params: { id: string } }) => {
           width={300}
           height={300}
         />
-        <p>{subscription?.subscriptions?.services?.name}</p>
-        <p>category here</p>
+        <p className="font-inter text-logo">
+          {subscription?.subscriptions?.services?.name}
+        </p>
+        <p className="font-inter text-logo">
+          {subscription.subscriptions?.services?.category}
+        </p>
         <div className="flex flex-row gap-2 items-center">
           <div className=" bg-searchbar-foreground rounded-3xl p-5 w-32 h-fit shadow-md grid place-items-center text-bill">
             {pricePerMonth} kr/mån
@@ -102,7 +107,7 @@ const Subscription = async ({ params }: { params: { id: string } }) => {
 
         <div className="flex flex-row gap-6">
           <EditSubscriptionButton id={subscription.id} />
-          <DeleteSubscriptionButton id={subscription.id} />
+          <DeleteSubscriptionButton id={String(subscription.id)} />
         </div>
       </div>
     </>
