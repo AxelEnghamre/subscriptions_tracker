@@ -1,5 +1,7 @@
 import GoHomeButton from "@/components/UI/buttons/GoHomeButton";
+import AddServiceForm from "@/components/subscription/AddServiceForm";
 import AddSubscriptionForm from "@/components/subscription/AddSubscriptionForm";
+import AddDisscountForm from "@/components/subscription/AddDiscountForm";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import type { Database } from "@/lib/supabase";
@@ -23,7 +25,7 @@ const AddSubscription = async () => {
     )
     .eq("owner_id", session.user.id);
 
-    const { data: services } = await supabase
+  const { data: services } = await supabase
     .schema("public")
     .from("services")
     .select(
@@ -33,14 +35,16 @@ const AddSubscription = async () => {
     )
     .eq("owner_id", session.user.id);
 
-    console.log(subscriptions);
-    console.log(services)
+  console.log(subscriptions);
+  console.log(services);
 
   return (
     <>
-      <div className="pb-2">
+      <div className="pb-2 text-logo flex flex-col gap-8">
         <GoHomeButton />
-        <AddSubscriptionForm />
+        <AddServiceForm />
+        <AddSubscriptionForm services={services} />
+        <AddDisscountForm subscriptions={subscriptions} services={services} />
       </div>
     </>
   );
