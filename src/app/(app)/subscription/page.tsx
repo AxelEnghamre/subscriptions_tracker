@@ -40,7 +40,7 @@ const AddSubscription = async () => {
 
   return (
     <>
-      <div className="pb-2 text-logo flex flex-col gap-8">
+      <div className="pb-2 text-logo flex flex-col gap-10 pb-[120px]">
         <GoHomeButton />
         <AddServiceForm />
         <AddSubscriptionForm services={services} />

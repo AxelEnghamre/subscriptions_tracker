@@ -61,8 +61,9 @@ const AddServiceForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="text-login-surface h-screen px-4 flex flex-col gap-4"
+      className="text-login-surface px-4 flex flex-col gap-4"
     >
+      <h3 className="text-lg font-semibold">Lägg till Service</h3>
       <label htmlFor="name">
         <p>Namn på Service</p>
         <Input

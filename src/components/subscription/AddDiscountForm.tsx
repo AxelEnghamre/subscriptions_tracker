@@ -78,9 +78,9 @@ const AddDisscountForm = (subscriptions, services) => {
       onSubmit={handleSubmit}
       className="text-login-surface px-4 flex flex-col gap-4"
     >
-      <p>Prenumerations pris</p>
-
+      <h3 className="text-lg font-semibold">Lägg till Prenumerations pris</h3>
       <label htmlFor="subscriptionID">
+        <p>Prenumerations pris</p>
         <select
           name="subscriptionID"
           id="subscriptionID"

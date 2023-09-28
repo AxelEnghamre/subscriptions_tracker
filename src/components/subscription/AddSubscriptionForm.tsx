@@ -68,8 +68,9 @@ const AddSubscriptionForm = (services) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="text-login-surface h-screen px-4 flex flex-col gap-4"
+      className="text-login-surface px-4 flex flex-col gap-4"
     >
+      <h3 className="text-lg font-semibold">Lägg till Prenumerations Plan</h3>
       <label htmlFor="serviceID">
         <select
           name="serviceID"
