@@ -2,7 +2,6 @@ import { z } from "zod";
 
 const userSubscriptionInputSchema = z.object({
   subscriptionID: z.number(),
-  pricePerMonth: z.number(),
   startDate: z.string(),
   renewalDate: z.string(),
   noticePeriodMonths: z.number(),

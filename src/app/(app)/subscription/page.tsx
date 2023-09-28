@@ -3,6 +3,7 @@ import AddServiceForm from "@/components/subscription/AddServiceForm";
 import AddSubscriptionForm from "@/components/subscription/AddSubscriptionForm";
 import AddSubscriptionPrice from "@/components/subscription/AddSubscriptionPrice";
 import AddDisscountForm from "@/components/subscription/AddDiscountForm";
+import AddUserSubscriptionForm from "@/components/subscription/AddUserSubscriptionForm";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import type { Database } from "@/lib/supabase";
@@ -36,18 +37,18 @@ const AddSubscription = async () => {
     )
     .eq("owner_id", session.user.id);
 
-  console.log(subscriptions);
-  console.log(services);
-
   return (
     <>
-      <div className="pb-2 text-logo flex flex-col gap-10 pb-[120px]">
+      <div className="text-logo flex flex-col gap-10 pb-[120px]">
         <GoHomeButton />
         <AddServiceForm />
         <AddSubscriptionForm services={services} />
         <AddSubscriptionPrice
           subscriptions={subscriptions}
           services={services}
+        />
+        <AddUserSubscriptionForm 
+          subscriptions={subscriptions}
         />
         {/* <AddDisscountForm subscriptions={subscriptions} services={services} /> */}
       </div>
