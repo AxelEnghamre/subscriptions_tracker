@@ -2,7 +2,7 @@ const dynamic = "force-dynamic";
 
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import { userSubscriptionInputSchema } from "@/lib/schemas/UserSubscriptionSchemas";
+import { userSubscriptionInputDeleteSchema } from "@/lib/schemas/UserSubscriptionSchemas";
 
 import type { Database } from "@/lib/supabase";
 
@@ -15,7 +15,7 @@ const POST = async (request: Request) => {
   if (!session) {
     return new Response(
       JSON.stringify({
-        message: "Du har inte behörighet till att lägga till ett abonemang",
+        message: "Du har inte behörighet till att ta bort ett användar abonemang",
       }),
       {
         status: 417,
@@ -24,7 +24,7 @@ const POST = async (request: Request) => {
   }
 
   const userSubscriptionValidation =
-    userSubscriptionInputSchema.safeParse(data);
+  userSubscriptionInputDeleteSchema.safeParse(data);
 
   if (!userSubscriptionValidation.success) {
     return new Response(JSON.stringify({ message: "Ogiltig data" }), {
@@ -34,26 +34,19 @@ const POST = async (request: Request) => {
 
   const userSubscriptionData = userSubscriptionValidation.data;
 
-  const { error: UserSubscriptionInsertError } = await supabase
+  const { error: UserSubscriptionDeleteError } = await supabase
     .from("users_subscriptions")
-    .insert([
-      {
-        subscription_id: userSubscriptionData.subscriptionID,
-        user_id: session.user.id,
-        start_date: userSubscriptionData.startDate,
-        renewal_date: userSubscriptionData.renewalDate,
-        notice_period_months: userSubscriptionData.noticePeriodMonths,
-      },
-    ])
+    .delete()
+    .eq("id", userSubscriptionData.id)
     .select();
 
-  if (UserSubscriptionInsertError) {
+  if (UserSubscriptionDeleteError) {
     return new Response(JSON.stringify({ message: "Server fel" }), {
       status: 500,
     });
   }
 
-  return new Response(JSON.stringify({ message: "Abonemang skapat" }), {
+  return new Response(JSON.stringify({ message: "Användarens abonnemang borttaget" }), {
     status: 200,
   });
 };
