@@ -49,7 +49,7 @@ const AddSubscription = async () => {
           subscriptions={subscriptions}
           services={services}
         />
-        <AddDisscountForm subscriptions={subscriptions} services={services} />
+        {/* <AddDisscountForm subscriptions={subscriptions} services={services} /> */}
       </div>
     </>
   );

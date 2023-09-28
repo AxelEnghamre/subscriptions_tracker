@@ -65,7 +65,9 @@ const AddSubscriptionPrice = (subscriptions, services) => {
       [name]: value,
     }));
 
-    const timestamp = String(Date.now());
+    const timestamp = new Date(
+      new Date().toString().split("GMT")[0] + " UTC",
+    ).toISOString();
 
     setSubscriptionPriceFormValue((prevState) => ({
       ...prevState,
