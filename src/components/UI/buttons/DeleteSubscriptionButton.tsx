@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { ThemeContext } from "@/contexts/ThemeContext";
 import { useContext } from "react";
-import { subscriptionInputDeleteSchema } from "@/lib/schemas/SubscriptionSchemas";
+import { userSubscriptionInputDeleteSchema } from "@/lib/schemas/UserSubscriptionSchemas";
+import { useRouter } from "next/navigation";
 
 const DeleteSubscriptionButton = ({
   id,
@@ -13,26 +14,32 @@ const DeleteSubscriptionButton = ({
   className?: string;
 }) => {
   const { theme, changeThemeTo } = useContext(ThemeContext) as ThemeContext;
+  const router = useRouter();
 
   const handleClick = async () => {
     const data = { id: String(id) };
+    console.log(data);
 
-    const validatedValues = subscriptionInputDeleteSchema.safeParse(data);
+    const validatedValues = userSubscriptionInputDeleteSchema.safeParse(data);
 
     if (validatedValues.success) {
       console.log(validatedValues.success);
 
-      /* try {
-        const res = await fetch("/api/subscription/delete", {
+      try {
+        const res = await fetch("/api/user-subscription/delete", {
           method: "POST",
           body: JSON.stringify(data),
         });
 
-        console.log(res);
+        if (res.ok) {
+          console.log(res);
+          // router.replace("/");
+          // router.refresh();
+        }
       } catch (error) {
         // TODO show errors
         console.log(error);
-      } */
+      }
     } else {
       console.log(validatedValues.error);
     }
