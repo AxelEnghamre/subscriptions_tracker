@@ -33,7 +33,7 @@ const NavMenu = () => {
   };
 
   return (
-    <nav className="font-inter">
+    <nav className="font-inter fixed top-0 left-0 w-screen h-[65]">
       <div className="flex flex-row justify-between items-center pt-4 h-full bg-gradient-top">
         <div>
           <div className="relative w-[116px] h-[65px]">

@@ -23,7 +23,7 @@ const DropDownContainer = () => {
     }
   }, [menu]);
   return (
-    <div>
+    <div className="mt-[80px]">
       <Notifications
         // className={`z-20 ${notificationsMenu ? "flex" : "hidden"}`}
         className="z-20"
