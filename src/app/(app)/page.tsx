@@ -87,10 +87,11 @@ const Home = async () => {
                 id={subscription.id}
                 name={subscription.subscriptions?.services?.name as string}
                 // iconUrl={subscription.subscriptions?.services?.icon_url as string}
-                pricePerMonth={
+                /* pricePerMonth={
                   subscription.subscriptions?.subscriptions_prices.at(-1)
                     ?.price_per_month as number
-                }
+                } */
+                pricePerMonth={subscription.subscriptions?.services?.name}
               />
             </li>
           ))}

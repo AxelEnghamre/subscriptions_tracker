@@ -78,7 +78,7 @@ const Subscription = async ({ params }: { params: { id: string } }) => {
       <GoHomeButton />
       <div className="w-full px-6 flex flex-col gap-5 items-center pb-[150px] text-inter">
         <Image
-          src={icon.publicUrl}
+          src={"/billProfile.svg"}
           alt={subscription.subscriptions?.services?.name as string}
           width={300}
           height={300}

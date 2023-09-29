@@ -9,7 +9,8 @@ const SubscriptionLink = ({
 }: {
   name: string;
   iconUrl?: string;
-  pricePerMonth: number;
+  // pricePerMonth: number;
+  pricePerMonth: string | null | undefined;
   id: string | number;
 }) => {
   return (
@@ -20,7 +21,8 @@ const SubscriptionLink = ({
       <div className="relative h-12 w-12">
         <Image fill src={iconUrl} alt={name} />
       </div>
-      <p className="text-center">{pricePerMonth} kr/mån</p>
+      {/* <p className="text-center">{pricePerMonth} kr/mån</p> */}
+      <p>{pricePerMonth}</p>
     </Link>
   );
 };
