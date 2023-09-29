@@ -33,8 +33,8 @@ const DeleteSubscriptionButton = ({
 
         if (res.ok) {
           console.log(res);
-          // router.replace("/");
-          // router.refresh();
+          router.replace("/");
+          router.refresh();
         }
       } catch (error) {
         // TODO show errors
