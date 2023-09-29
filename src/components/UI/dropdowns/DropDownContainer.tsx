@@ -25,9 +25,15 @@ const DropDownContainer = () => {
   return (
     <div>
       <Notifications
-        className={`z-20 ${notificationsMenu ? "flex" : "hidden"}`}
+        // className={`z-20 ${notificationsMenu ? "flex" : "hidden"}`}
+        className="z-20"
+        openState={notificationsMenu}
       />
-      <Search className={`z-20 ${searchMenu ? "flex" : "hidden"}`} />
+      <Search 
+        // className={`z-20 ${searchMenu ? "flex" : "hidden"}`}
+        className="z-20"
+        openState={searchMenu}
+       />
     </div>
   );
 };

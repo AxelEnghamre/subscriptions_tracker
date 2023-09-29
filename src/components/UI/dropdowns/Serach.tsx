@@ -4,8 +4,9 @@ import Input from "../Input";
 import { useEffect, useState } from "react";
 import CategoryButtons from "../buttons/CategoryButtons";
 import AddSubscriptionButton from "../buttons/AddSubscriptionButton";
+import { motion, useMotionValue, PanInfo } from "framer-motion";
 
-const Search = ({ className }: { className?: string }) => {
+const Search = ({ className, openState }: { className?: string; openState: Boolean }) => {
   const [searchValue, setsearchValue] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,8 +16,14 @@ const Search = ({ className }: { className?: string }) => {
     console.log(searchValue);
   };
   return (
-    <div
-      className={`bg-gradient-to-b from-gradient-top to-gradient-bottom h-[auto] rounded-b-3xl w-full flex-col pr-8 pl-6 pt-10 fixed gap-8 flex ${className}`}
+    <motion.div
+      className={`bg-gradient-to-b from-gradient-top to-gradient-bottom h-[auto] rounded-b-3xl w-full flex-col pr-8 pl-6 ${openState && "pt-10"} fixed gap-8 flex ${className} overflow-hidden`}
+      animate={openState ? "open" : "closed"}
+      initial={"closed"}
+      variants={{
+        open: { height: "auto" },
+        closed: { height: 0},
+      }}
     >
       <div className=" flex flex-col gap-10">
         <div className="flex flex-row pt-2 items-center gap-4">
@@ -48,7 +55,7 @@ const Search = ({ className }: { className?: string }) => {
       <div className="flex justify-center items-center pb-5">
         <div className="bg-logo w-[43px] h-[4px] rounded"></div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
