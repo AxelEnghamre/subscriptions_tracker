@@ -6,14 +6,16 @@ import ConfirmButton from "../UI/buttons/ConfirmButton";
 import Image from "next/image";
 import { type } from "os";
 import { subscriptionInputSchema } from "@/lib/schemas/SubscriptionSchemas";
+import { useRouter } from "next/navigation";
 
 // TODO add type
-const AddSubscriptionForm = (services:any) => {
+const AddSubscriptionForm = (services: any) => {
   const [subscriptionFormValue, setSubscriptionFormValue] = useState({
     serviceID: "",
     plan: "",
   });
   const [isSigningIn, setIsSigningIn] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -34,7 +36,9 @@ const AddSubscriptionForm = (services:any) => {
 
         console.log(res);
         if (res.ok) {
-          console.log(res);
+          // console.log(res);
+          router.refresh();
+          router.replace("/");
         } else {
         }
       } catch (error) {
@@ -79,7 +83,7 @@ const AddSubscriptionForm = (services:any) => {
           onChange={handleChange}
         >
           <option value="">Välj Service</option>
-          {services.services.map((service:any) => (
+          {services.services.map((service: any) => (
             <option key={service.id} value={service.id}>
               {service.name}
             </option>
