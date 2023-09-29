@@ -7,13 +7,14 @@ sgMail.setApiKey(process.env.NEXT_SENDGRID_API_KEY as string);
 
 const GET = async () => {
   try {
-    const emails = ["axel@enghamre.se"];
+    // TODO get all the mails from supabase
+    const emails = ["test@test.se"];
     const mail = {
       to: emails,
       from: process.env.NEXT_SENDGRID_SENDER_EMAIL as string,
-      subject: "priser",
+      subject: "Påminelse",
       text: `
-            ttest
+            Glöm inte dina fakturor!
           `,
     };
 
