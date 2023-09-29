@@ -16,6 +16,7 @@ const AddSubscriptionForm = (services: any) => {
   });
   const [isSigningIn, setIsSigningIn] = useState(false);
   const router = useRouter();
+  const [serviceName, setServiceName] = useState("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -36,6 +37,7 @@ const AddSubscriptionForm = (services: any) => {
 
         console.log(res);
         if (res.ok) {
+          router.refresh();
           // console.log(res);
         } else {
         }
@@ -97,7 +99,7 @@ const AddSubscriptionForm = (services: any) => {
           placeholder="familj"
           name="plan"
           type="text"
-          value={subscriptionFormValue.plan}
+          value={`${subscriptionFormValue.plan}`}
           onChange={handleChange}
         />
       </label>

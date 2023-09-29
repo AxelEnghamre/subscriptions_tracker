@@ -6,14 +6,16 @@ import { categoryIcons, icons } from "@/lib/icons/Icons";
 import ConfirmButton from "../UI/buttons/ConfirmButton";
 import Image from "next/image";
 import { subscriptionPriceInputSchema } from "@/lib/schemas/SubscriptionPriceSchemas";
+import { useRouter } from "next/navigation";
 
-const AddSubscriptionPrice = (subscriptions:any, services:any) => {
+const AddSubscriptionPrice = (subscriptions: any, services: any) => {
   const [subscriptionPriceFormValue, setSubscriptionPriceFormValue] = useState({
     subscriptionID: "",
     pricePerMonth: "",
     createdAt: "",
   });
   const [isSigningIn, setIsSigningIn] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -35,6 +37,7 @@ const AddSubscriptionPrice = (subscriptions:any, services:any) => {
         console.log(res);
         if (res.ok) {
           console.log(res);
+          router.refresh();
         } else {
         }
       } catch (error) {
@@ -88,7 +91,7 @@ const AddSubscriptionPrice = (subscriptions:any, services:any) => {
           onChange={handleChange}
         >
           <option value="">Välj Prenumeration</option>
-          {subscriptions.subscriptions.map((subscription:any) => (
+          {subscriptions.subscriptions.map((subscription: any) => (
             <option key={subscription.id} value={subscription.id}>
               {subscription.plan}
             </option>

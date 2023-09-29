@@ -6,6 +6,7 @@ import { categoryIcons, icons } from "@/lib/icons/Icons";
 import ConfirmButton from "../UI/buttons/ConfirmButton";
 import Image from "next/image";
 import { serviceInputSchema } from "@/lib/schemas/ServiceSchemas";
+import { useRouter } from "next/navigation";
 
 const AddServiceForm = () => {
   const [serviceFormValue, setServiceFormValue] = useState({
@@ -14,6 +15,7 @@ const AddServiceForm = () => {
     websiteUrl: "",
   });
   const [isSigningIn, setIsSigningIn] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -33,6 +35,7 @@ const AddServiceForm = () => {
         console.log(res);
         if (res.ok) {
           console.log(res);
+          router.refresh();
         } else {
         }
       } catch (error) {
