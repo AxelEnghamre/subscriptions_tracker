@@ -6,6 +6,7 @@ import { categoryIcons, icons } from "@/lib/icons/Icons";
 import ConfirmButton from "../UI/buttons/ConfirmButton";
 import Image from "next/image";
 import { userSubscriptionInputSchema } from "@/lib/schemas/UserSubscriptionSchemas";
+import { useRouter } from "next/navigation";
 
 const AddUserSubscriptionForm = (subscriptions: any) => {
   const [userSubscriptionFormValue, setUserSubscriptionFormValue] = useState({
@@ -15,6 +16,7 @@ const AddUserSubscriptionForm = (subscriptions: any) => {
     noticePeriodMonths: 12,
   });
   const [isSigningIn, setIsSigningIn] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -36,6 +38,8 @@ const AddUserSubscriptionForm = (subscriptions: any) => {
         console.log(res);
         if (res.ok) {
           console.log(res);
+          router.refresh();
+          router.replace("/");
         } else {
         }
       } catch (error) {

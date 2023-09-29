@@ -37,8 +37,6 @@ const AddSubscriptionForm = (services: any) => {
         console.log(res);
         if (res.ok) {
           // console.log(res);
-          router.refresh();
-          router.replace("/");
         } else {
         }
       } catch (error) {
