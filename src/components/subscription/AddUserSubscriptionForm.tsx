@@ -38,8 +38,7 @@ const AddUserSubscriptionForm = (subscriptions: any) => {
         console.log(res);
         if (res.ok) {
           console.log(res);
-          router.refresh();
-          router.replace("/");
+          router.push("/");
         } else {
         }
       } catch (error) {

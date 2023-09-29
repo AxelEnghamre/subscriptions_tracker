@@ -36,6 +36,7 @@ const AddServiceForm = () => {
         if (res.ok) {
           console.log(res);
           router.refresh();
+          // router.reload();
         } else {
         }
       } catch (error) {
